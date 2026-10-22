@@ -4,160 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pastel Blue Number Converter ☁️</title>
+    <title>Kalkulator Sistem Bilangan</title>
 
     <!-- Bootstrap CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap"
-          rel="stylesheet">
-
-    <style>
-        :root {
-            --blue: #cce7ff;
-            --blue-dark: #77b9ed;
-            --blue-light: #edf7ff;
-            --lavender: #e0e9ff;
-            --text: #526d87;
-            --white: #ffffff;
-        }
-
-        body {
-            font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #eaf6ff, #f3f7ff, #e4f2ff);
-            color: var(--text);
-            min-height: 100vh;
-        }
-
-        .converter-card {
-            background: rgba(255, 255, 255, 0.95);
-            border: 2px solid #ffffff;
-            border-radius: 28px;
-            overflow: hidden;
-            box-shadow: 0 12px 35px rgba(112, 169, 218, 0.20);
-        }
-
-        .card-header-custom {
-            background: linear-gradient(120deg, #cce7ff, #dce5ff);
-            padding: 28px 15px;
-            border: none;
-        }
-
-        .card-header-custom h2 {
-            font-weight: 800;
-            color: #4e779e;
-            margin-bottom: 5px;
-        }
-
-        .subtitle {
-            color: #6386a8;
-            font-size: 14px;
-        }
-
-        .form-label {
-            font-weight: 800;
-            color: #6286a8;
-            margin-bottom: 8px;
-        }
-
-        .form-control,
-        .form-select {
-            border: 2px solid #dceeff;
-            border-radius: 14px;
-            padding: 12px 14px;
-            color: #526d87;
-            background-color: #fafdff;
-        }
-
-        .form-control:focus,
-        .form-select:focus {
-            border-color: #9bcdf5;
-            box-shadow: 0 0 0 0.2rem rgba(155, 205, 245, 0.25);
-        }
-
-        .btn-convert {
-            background: linear-gradient(120deg, #b9dfff, #c8d8ff);
-            color: #456b91;
-            border: none;
-            border-radius: 15px;
-            padding: 13px;
-            font-size: 17px;
-            font-weight: 800;
-            transition: 0.2s;
-        }
-
-        .btn-convert:hover {
-            color: #365a7d;
-            transform: translateY(-2px);
-            background: linear-gradient(120deg, #a4d3fb, #b6caff);
-        }
-
-        .result-box {
-            background: linear-gradient(135deg, #eff8ff, #eef1ff);
-            border: 2px dashed #b8d9f5;
-            border-radius: 20px;
-            padding: 22px 12px;
-        }
-
-        .result-label {
-            font-size: 13px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: #86a9c9;
-            text-transform: uppercase;
-        }
-
-        #hasil {
-            font-size: clamp(2rem, 8vw, 3rem);
-            font-weight: 800;
-            color: #6ca9dc;
-            overflow-wrap: anywhere;
-            margin-top: 8px;
-        }
-
-        #pesan {
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .card-footer-custom {
-            background: #f5faff;
-            color: #89abc9;
-            border-top: 1px solid #e4f1fc;
-            font-size: 13px;
-        }
-
-        .decor {
-            font-size: 25px;
-        }
-    </style>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
 </head>
+<body class="bg-light">
 
-<body>
-    <div class="container py-5">
+    <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-12 col-sm-10 col-md-7 col-lg-5">
-
-                <div class="text-center mb-3 decor">
-                    ☁️ 🩵 ✨
-                </div>
-
-                <div class="card converter-card">
-
-                    <div class="card-header-custom text-center">
-                        <h2>Number Converter ☁️</h2>
-                        <p class="subtitle mb-0">
-                            Let's convert numbers together!
-                        </p>
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h3>Kalkulator Sistem Bilangan</h3>
                     </div>
 
-                    <div class="card-body p-4 p-md-5">
-
-                        <div class="mb-4">
+                    <div class="card-body p-4">
+                        <!-- Input bilangan -->
+                        <div class="mb-3">
                             <label for="bilangan" class="form-label">
-                                🩵 Masukkan Bilangan
+                                Masukkan Bilangan
                             </label>
                             <input
                                 type="text"
@@ -167,86 +36,104 @@
                             >
                         </div>
 
-                        <div class="mb-4">
+                        <!-- Sistem bilangan asal -->
+                        <div class="mb-3">
                             <label for="asal" class="form-label">
-                                ☁️ Sistem Bilangan Input
+                                Sistem Bilangan Input
                             </label>
                             <select id="asal" class="form-select">
                                 <option value="2">Biner (Basis 2)</option>
                                 <option value="8">Oktal (Basis 8)</option>
-                                <option value="10" selected>Desimal (Basis 10)</option>
-                                <option value="16">Heksadesimal (Basis 16)</option>
+                                <option value="10" selected>
+                                    Desimal (Basis 10)
+                                </option>
+                                <option value="16">
+                                    Heksadesimal (Basis 16)
+                                </option>
                             </select>
                         </div>
 
-                        <div class="mb-4">
+                        <!-- Sistem bilangan tujuan -->
+                        <div class="mb-3">
                             <label for="tujuan" class="form-label">
-                                🦋 Konversi Ke
+                                Konversi Ke
                             </label>
                             <select id="tujuan" class="form-select">
                                 <option value="2">Biner (Basis 2)</option>
                                 <option value="8">Oktal (Basis 8)</option>
                                 <option value="10">Desimal (Basis 10)</option>
-                                <option value="16" selected>Heksadesimal (Basis 16)</option>
+                                <option value="16" selected>
+                                    Heksadesimal (Basis 16)
+                                </option>
                             </select>
                         </div>
 
+                        <!-- Tombol konversi -->
                         <div class="d-grid mb-4">
                             <button
                                 type="button"
-                                class="btn btn-convert"
+                                class="btn btn-primary btn-lg"
                                 onclick="konversikan()"
                             >
-                                ✨ Konversi Sekarang ✨
+                                Konversi
                             </button>
                         </div>
 
-                        <div class="result-box text-center">
-                            <div class="result-label">
-                                ♡ Hasil Konversi ♡
+                        <!-- Hasil konversi -->
+                        <div class="text-center border rounded p-3 bg-light">
+                            <label class="form-label text-muted">
+                                Hasil Konversi
+                            </label>
+                            <div
+                                id="hasil"
+                                class="fs-2 fw-bold text-primary"
+                                aria-live="polite"
+                            >
+                                -
                             </div>
-
-                            <div id="hasil" aria-live="polite">
-                                ૮ ˶ᵔ ᵕ ᵔ˶ ა
-                            </div>
-
-                            <div id="pesan" role="alert"></div>
+                            <div
+                                id="pesan"
+                                class="text-danger mt-2"
+                                role="alert"
+                            ></div>
                         </div>
-
                     </div>
 
-                    <div class="card-footer-custom text-center py-3">
-                        ☁️ Binary · Octal · Decimal · Hexadecimal ☁️
+                    <div class="card-footer text-center text-muted">
+                        Biner | Oktal | Desimal | Heksadesimal
                     </div>
                 </div>
-
-                <p class="text-center mt-4 small">
-                    Made with 🩵 and blue skies
-                </p>
-
             </div>
         </div>
     </div>
 
     <script>
         function konversikan() {
-            const bilangan = document.getElementById("bilangan").value.trim();
-            const asal = Number(document.getElementById("asal").value);
-            const tujuan = Number(document.getElementById("tujuan").value);
+            const bilangan = document
+                .getElementById("bilangan")
+                .value.trim();
+
+            const asal = parseInt(
+                document.getElementById("asal").value
+            );
+
+            const tujuan = parseInt(
+                document.getElementById("tujuan").value
+            );
 
             const hasilElement = document.getElementById("hasil");
             const pesanElement = document.getElementById("pesan");
 
             hasilElement.textContent = "-";
             pesanElement.textContent = "";
-            pesanElement.className = "";
 
             if (bilangan === "") {
                 pesanElement.textContent =
-                    "Ups! Bilangannya belum diisi ya 🩵";
+                    "Silakan masukkan bilangan terlebih dahulu.";
                 return;
             }
 
+            // Validasi digit berdasarkan sistem bilangan asal
             const pola = {
                 2: /^[01]+$/,
                 8: /^[0-7]+$/,
@@ -256,30 +143,27 @@
 
             if (!pola[asal].test(bilangan)) {
                 pesanElement.textContent =
-                    "Bilangan tidak sesuai dengan sistem yang dipilih ☁️";
+                    "Bilangan tidak valid untuk sistem bilangan yang dipilih.";
                 return;
             }
 
+            // Konversi ke nilai desimal
             const nilaiDesimal = parseInt(bilangan, asal);
 
             if (!Number.isSafeInteger(nilaiDesimal)) {
                 pesanElement.textContent =
-                    "Angkanya terlalu besar untuk diproses dengan aman 💭";
+                    "Bilangan terlalu besar untuk diproses dengan aman.";
                 return;
             }
 
-            const hasil = nilaiDesimal.toString(tujuan).toUpperCase();
+            // Konversi ke sistem bilangan tujuan
+            const hasil = nilaiDesimal
+                .toString(tujuan)
+                .toUpperCase();
 
             hasilElement.textContent = hasil;
-            pesanElement.textContent = "Berhasil dikonversi! Yeay! 🩵";
-            pesanElement.className = "text-primary mt-2";
         }
-
-        document.getElementById("bilangan").addEventListener("keydown", function(event) {
-            if (event.key === "Enter") {
-                konversikan();
-            }
-        });
     </script>
+
 </body>
 </html>
