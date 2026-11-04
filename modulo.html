@@ -22,47 +22,81 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 25px 12px;
+    padding: 25px;
     color: #333;
 }
 
+/* Background */
+.game-background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.cloud {
+    position: absolute;
+    font-size: 55px;
+    animation: moveCloud 15s linear infinite;
+}
+
+.cloud:nth-child(1) {
+    top: 10%;
+    left: 5%;
+}
+
+.cloud:nth-child(2) {
+    top: 25%;
+    left: 75%;
+}
+
+@keyframes moveCloud {
+    from { transform: translateX(-30px); }
+    to { transform: translateX(50px); }
+}
+
+/* Main Container */
 .container {
     width: 100%;
-    max-width: 435px;
+    max-width: 520px;
     background: #fff5d6;
     border: 6px solid #663300;
-    box-shadow: 9px 9px 0 #333;
-    padding: 20px;
+    box-shadow: 10px 10px 0 #333;
+    padding: 25px;
+    position: relative;
 }
 
 .header {
     background: #e83c32;
     color: white;
     text-align: center;
-    padding: 20px 5px;
+    padding: 20px 10px;
     border: 4px solid #663300;
     margin-bottom: 20px;
     line-height: 2;
 }
 
 .header h1 {
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .header p {
     font-size: 8px;
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
+/* Pixel decoration */
 .decoration {
     display: flex;
     justify-content: space-around;
-    font-size: 25px;
-    margin-bottom: 20px;
+    font-size: 28px;
+    margin-bottom: 15px;
 }
 
+/* Input */
 .input-group {
-    margin-bottom: 18px;
+    margin-bottom: 17px;
 }
 
 label {
@@ -72,38 +106,42 @@ label {
     color: #633b17;
 }
 
-input {
+input, select {
     width: 100%;
     padding: 14px;
-    border: 3px solid #663300;
+    border: 4px solid #663300;
     background: white;
-    font-family: inherit;
+    font-family: 'Press Start 2P', cursive;
     font-size: 12px;
     outline: none;
 }
 
-input:focus {
+input:focus, select:focus {
     border-color: #e83c32;
 }
 
+/* Button */
 button {
     width: 100%;
     padding: 15px;
-    border: 3px solid #663300;
-    font-family: inherit;
+    border: 4px solid #663300;
+    font-family: 'Press Start 2P', cursive;
     font-size: 10px;
     cursor: pointer;
+    transition: 0.15s;
 }
 
 .calculate {
     background: #38b54a;
     color: white;
     box-shadow: 0 5px #176c2a;
-    margin-top: 3px;
+    margin-top: 5px;
 }
 
 .calculate:hover {
     background: #2b963b;
+    transform: translateY(2px);
+    box-shadow: 0 3px #176c2a;
 }
 
 .reset {
@@ -112,36 +150,42 @@ button {
     margin-top: 12px;
 }
 
+.reset:hover {
+    background: #f2b900;
+}
+
+/* Result */
 .result {
     background: #d5f5c7;
-    border: 3px dashed #36913d;
-    padding: 20px 10px;
+    border: 4px dashed #36913d;
+    padding: 18px;
     margin-top: 20px;
     text-align: center;
     display: none;
-    line-height: 2.5;
+    line-height: 2;
     overflow-wrap: anywhere;
 }
 
 .result h3 {
     font-size: 11px;
     color: #176c2a;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .result p {
     font-size: 10px;
+    margin-bottom: 10px;
 }
 
 .result strong {
-    font-size: 22px;
+    font-size: 18px;
     color: #e83c32;
 }
 
 .history {
     margin-top: 20px;
-    background: white;
-    border: 3px solid #663300;
+    background: #fff;
+    border: 4px solid #663300;
     padding: 15px;
 }
 
@@ -154,7 +198,6 @@ button {
     list-style: none;
     font-size: 9px;
     line-height: 2.5;
-    overflow-wrap: anywhere;
 }
 
 .footer {
@@ -165,19 +208,24 @@ button {
     color: #663300;
 }
 
-@media(max-width: 400px) {
+@media(max-width: 480px) {
     .container {
-        padding: 13px;
+        padding: 15px;
     }
 
     .header h1 {
-        font-size: 11px;
+        font-size: 12px;
     }
 }
 </style>
 </head>
 
 <body>
+
+<div class="game-background">
+    <div class="cloud">☁️</div>
+    <div class="cloud">☁️</div>
+</div>
 
 <div class="container">
 
@@ -194,17 +242,21 @@ button {
     </div>
 
     <div class="input-group">
-        <label>BILANGAN (a)</label>
-        <input type="number" id="angka"
-        placeholder="Masukkan bilangan a"
-        step="1">
+        <label>ANGKA PERTAMA (a)</label>
+        <input type="number" id="angka1"
+        placeholder="Masukkan angka">
     </div>
 
     <div class="input-group">
-        <label>MODULUS (m)</label>
+        <label>ANGKA KEDUA (b)</label>
+        <input type="number" id="angka2"
+        placeholder="Masukkan angka">
+    </div>
+
+    <div class="input-group">
+        <label>MODULUS (n)</label>
         <input type="number" id="modulus"
-        placeholder="Masukkan modulus m"
-        step="1">
+        placeholder="Masukkan modulus">
     </div>
 
     <button class="calculate" onclick="hitung()">
@@ -217,13 +269,11 @@ button {
 
     <div class="result" id="result">
         <h3>⭐ LEVEL COMPLETED ⭐</h3>
-
         <p id="rumus"></p>
-
         <p>HASIL MODULAR:</p>
-
         <strong id="hasil"></strong>
     </div>
+
 
     <div class="footer">
         🍄 SITI AFRILIANI ROSIPAH 🍄
@@ -237,48 +287,104 @@ button {
 
 function hitung() {
 
-    let aInput = document.getElementById("angka").value;
-    let mInput = document.getElementById("modulus").value;
+    let a = Number(document.getElementById("angka1").value);
+    let b = Number(document.getElementById("angka2").value);
+    let n = Number(document.getElementById("modulus").value);
+    let op = document.getElementById("operator").value;
 
-    if (aInput === "" || mInput === "") {
-        alert("Masukkan bilangan a dan modulus m!");
+    let hasil;
+    let rumus;
+
+    if (
+        document.getElementById("angka1").value === "" ||
+        document.getElementById("angka2").value === "" ||
+        document.getElementById("modulus").value === ""
+    ) {
+        alert("Masukkan semua angka terlebih dahulu!");
         return;
     }
 
-    let a = Number(aInput);
-    let m = Number(mInput);
-
-    if (!Number.isSafeInteger(a) ||
-        !Number.isSafeInteger(m)) {
-        alert("Masukkan bilangan bulat yang valid!");
+    if (
+        !Number.isSafeInteger(a) ||
+        !Number.isSafeInteger(b) ||
+        !Number.isSafeInteger(n)
+    ) {
+        alert("Gunakan bilangan bulat yang aman!");
         return;
     }
 
-    if (m <= 0) {
+    if (n <= 0) {
         alert("Modulus harus lebih besar dari 0!");
         return;
     }
 
-    // Menghitung aritmatika modular
-    let hasil = ((a % m) + m) % m;
+    // Menghitung operasi modular
+    switch(op) {
 
-    let rumus = `${a} mod ${m}`;
+        case "+":
+            hasil = ((a % n) + (b % n)) % n;
+            rumus = `(${a} + ${b}) mod ${n}`;
+            break;
+
+        case "-":
+            hasil = (((a % n) - (b % n)) % n + n) % n;
+            rumus = `(${a} - ${b}) mod ${n}`;
+            break;
+
+        case "*":
+            hasil = ((a % n) * (b % n)) % n;
+            rumus = `(${a} × ${b}) mod ${n}`;
+            break;
+
+        case "^":
+            if (b < 0) {
+                alert("Pangkat harus bilangan bulat non-negatif!");
+                return;
+            }
+
+            hasil = 1 % n;
+            let base = a % n;
+            let exp = b;
+
+            // Modular exponentiation
+            while (exp > 0) {
+                if (exp % 2 === 1) {
+                    hasil = (hasil * base) % n;
+                }
+
+                base = (base * base) % n;
+                exp = Math.floor(exp / 2);
+            }
+
+            rumus = `${a} pangkat ${b} mod ${n}`;
+            break;
+    }
 
     // Menampilkan hasil
     document.getElementById("result").style.display = "block";
+    document.getElementById("rumus").innerText = rumus;
+    document.getElementById("hasil").innerText = hasil;
 
-    document.getElementById("rumus").innerText =
-        rumus;
+    // Menambahkan history
+    let history = document.getElementById("history");
 
-    document.getElementById("hasil").innerText =
-        hasil;
+    if (history.children.length === 1 &&
+        history.children[0].innerText === "Belum ada perhitungan.") {
+        history.innerHTML = "";
+    }
+
+    let item = document.createElement("li");
+    item.innerText = `${rumus} = ${hasil}`;
+
+    history.prepend(item);
 }
 
 function resetKalkulator() {
 
-    document.getElementById("angka").value = "";
-
+    document.getElementById("angka1").value = "";
+    document.getElementById("angka2").value = "";
     document.getElementById("modulus").value = "";
+    document.getElementById("operator").value = "+";
 
     document.getElementById("result").style.display = "none";
 
