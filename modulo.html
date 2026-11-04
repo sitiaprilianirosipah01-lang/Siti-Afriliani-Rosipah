@@ -225,13 +225,6 @@ button {
         <strong id="hasil"></strong>
     </div>
 
-    <div class="history">
-        <h3>📜 HISTORY</h3>
-        <ul id="history">
-            <li>Belum ada perhitungan.</li>
-        </ul>
-    </div>
-
     <div class="footer">
         🍄 SITI AFRILIANI ROSIPAH 🍄
         <br>
@@ -279,22 +272,6 @@ function hitung() {
 
     document.getElementById("hasil").innerText =
         hasil;
-
-    // Menambahkan riwayat perhitungan
-    let history = document.getElementById("history");
-
-    if (history.children.length === 1 &&
-        history.children[0].innerText ===
-        "Belum ada perhitungan.") {
-
-        history.innerHTML = "";
-    }
-
-    let item = document.createElement("li");
-
-    item.innerText = `${rumus} = ${hasil}`;
-
-    history.prepend(item);
 }
 
 function resetKalkulator() {
@@ -305,8 +282,6 @@ function resetKalkulator() {
 
     document.getElementById("result").style.display = "none";
 
-    document.getElementById("history").innerHTML =
-        "<li>Belum ada perhitungan.</li>";
 }
 
 </script>
