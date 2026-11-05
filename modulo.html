@@ -4,7 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Siti Afriliani Rosipah - 262505004 - Calculator</title>
+<title>Pixel Mario Calculator</title>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
@@ -25,23 +26,14 @@ body {
     overflow-x: hidden;
 }
 
-/* =========================
-   BACKGROUND LANGIT
-========================= */
-
+/* BACKGROUND LANGIT */
 .sky {
     position: fixed;
     inset: 0;
-    background: linear-gradient(
-        to bottom,
-        #55b9ed,
-        #65c5f7
-    );
+    background: linear-gradient(to bottom, #55b9ed, #65c5f7);
     overflow: hidden;
     z-index: -1;
 }
-
-/* Awan pixel */
 
 .cloud {
     position: absolute;
@@ -60,96 +52,27 @@ body {
         50px 0 0 white,
         50px 5px 0 #dcecff,
         60px 10px 0 #b9d8f5;
-    image-rendering: pixelated;
+
     animation: cloudMove 30s linear infinite;
 }
 
-/* Posisi awan */
-
-.cloud:nth-child(1) {
-    top: 10%;
-    left: -100px;
-    transform: scale(1.2);
-    animation-duration: 35s;
-}
-
-.cloud:nth-child(2) {
-    top: 22%;
-    left: 20%;
-    transform: scale(0.7);
-    animation-duration: 45s;
-}
-
-.cloud:nth-child(3) {
-    top: 15%;
-    left: 65%;
-    transform: scale(1.5);
-    animation-duration: 38s;
-}
-
-.cloud:nth-child(4) {
-    top: 35%;
-    left: 85%;
-    transform: scale(0.9);
-    animation-duration: 42s;
-}
-
-.cloud:nth-child(5) {
-    top: 48%;
-    left: 5%;
-    transform: scale(1.4);
-    animation-duration: 50s;
-}
-
-.cloud:nth-child(6) {
-    top: 55%;
-    left: 75%;
-    transform: scale(1.1);
-    animation-duration: 36s;
-}
-
-.cloud:nth-child(7) {
-    top: 70%;
-    left: 25%;
-    transform: scale(0.8);
-    animation-duration: 44s;
-}
-
-.cloud:nth-child(8) {
-    top: 80%;
-    left: 60%;
-    transform: scale(1.3);
-    animation-duration: 40s;
-}
-
-.cloud:nth-child(9) {
-    top: 5%;
-    left: 90%;
-    transform: scale(0.8);
-    animation-duration: 48s;
-}
-
-.cloud:nth-child(10) {
-    top: 65%;
-    left: 95%;
-    transform: scale(0.7);
-    animation-duration: 39s;
-}
+.cloud:nth-child(1) { top: 10%; left: 5%; }
+.cloud:nth-child(2) { top: 22%; left: 20%; animation-duration: 45s; }
+.cloud:nth-child(3) { top: 15%; left: 65%; animation-duration: 38s; }
+.cloud:nth-child(4) { top: 35%; left: 85%; animation-duration: 42s; }
+.cloud:nth-child(5) { top: 48%; left: 5%; animation-duration: 50s; }
+.cloud:nth-child(6) { top: 55%; left: 75%; animation-duration: 36s; }
+.cloud:nth-child(7) { top: 70%; left: 25%; animation-duration: 44s; }
+.cloud:nth-child(8) { top: 80%; left: 60%; animation-duration: 40s; }
+.cloud:nth-child(9) { top: 5%; left: 90%; animation-duration: 48s; }
+.cloud:nth-child(10) { top: 65%; left: 95%; animation-duration: 39s; }
 
 @keyframes cloudMove {
-    from {
-        translate: -30px 0;
-    }
-
-    to {
-        translate: 100px 0;
-    }
+    from { translate: -30px 0; }
+    to { translate: 100px 0; }
 }
 
-/* =========================
-   KALKULATOR
-========================= */
-
+/* CONTAINER UTAMA */
 .container {
     width: 100%;
     max-width: 540px;
@@ -161,8 +84,7 @@ body {
     z-index: 2;
 }
 
-/* Header */
-
+/* HEADER */
 .header {
     background: #e83c32;
     color: white;
@@ -174,7 +96,7 @@ body {
 }
 
 .header h1 {
-    font-size: 17px;
+    font-size: 16px;
 }
 
 .header p {
@@ -182,8 +104,7 @@ body {
     margin-top: 8px;
 }
 
-/* Dekorasi Mario */
-
+/* IKON */
 .decoration {
     display: flex;
     justify-content: space-around;
@@ -191,17 +112,33 @@ body {
     margin-bottom: 25px;
 }
 
-/* Input */
+/* JUDUL KALKULATOR */
+.section-title {
+    background: #e83c32;
+    color: white;
+    border: 3px solid #663300;
+    padding: 15px 8px;
+    text-align: center;
+    font-size: 11px;
+    line-height: 2;
+    margin-bottom: 20px;
+}
 
+.section-title.congruence {
+    background: #2879d0;
+}
+
+/* INPUT */
 .input-group {
     margin-bottom: 20px;
 }
 
 label {
     display: block;
-    font-size: 11px;
+    font-size: 10px;
     margin-bottom: 12px;
     color: #633b17;
+    line-height: 1.8;
 }
 
 input {
@@ -210,7 +147,7 @@ input {
     border: 4px solid #663300;
     background: white;
     font-family: inherit;
-    font-size: 12px;
+    font-size: 11px;
     outline: none;
 }
 
@@ -218,14 +155,13 @@ input:focus {
     border-color: #e83c32;
 }
 
-/* Tombol */
-
+/* TOMBOL */
 button {
     width: 100%;
-    padding: 18px;
+    padding: 17px 8px;
     border: 4px solid #663300;
     font-family: inherit;
-    font-size: 11px;
+    font-size: 10px;
     cursor: pointer;
     transition: 0.15s;
 }
@@ -234,7 +170,6 @@ button {
     background: #38b54a;
     color: white;
     box-shadow: 0 5px #176c2a;
-    margin-top: 5px;
 }
 
 .calculate:hover {
@@ -253,12 +188,11 @@ button {
     background: #f2b900;
 }
 
-/* Hasil */
-
+/* HASIL */
 .result {
     background: #d5f5c7;
     border: 4px dashed #36913d;
-    padding: 22px 12px;
+    padding: 20px 10px;
     margin-top: 25px;
     text-align: center;
     display: none;
@@ -267,7 +201,7 @@ button {
 }
 
 .result h3 {
-    font-size: 11px;
+    font-size: 10px;
     color: #176c2a;
     margin-bottom: 15px;
 }
@@ -277,21 +211,34 @@ button {
 }
 
 .result strong {
-    font-size: 25px;
+    font-size: 20px;
     color: #e83c32;
 }
 
-/* Footer */
+.result.congruent {
+    background: #d9eaff;
+    border-color: #2879d0;
+}
 
+.result.congruent h3 {
+    color: #18559c;
+}
+
+/* PEMISAH */
+.separator {
+    border: none;
+    border-top: 4px dashed #a77a43;
+    margin: 35px 0;
+}
+
+/* FOOTER */
 .footer {
     text-align: center;
-    font-size: 9px;
-    margin-top: 25px;
+    font-size: 8px;
+    margin-top: 30px;
     line-height: 2.5;
     color: #663300;
 }
-
-/* Responsif */
 
 @media(max-width: 480px) {
     .container {
@@ -299,7 +246,7 @@ button {
     }
 
     .header h1 {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     label {
@@ -309,12 +256,7 @@ button {
     button {
         font-size: 9px;
     }
-
-    .footer {
-        font-size: 7px;
-    }
 }
-
 </style>
 </head>
 
@@ -322,7 +264,6 @@ button {
 
 <!-- BACKGROUND AWAN -->
 <div class="sky">
-
     <div class="cloud"></div>
     <div class="cloud"></div>
     <div class="cloud"></div>
@@ -333,18 +274,17 @@ button {
     <div class="cloud"></div>
     <div class="cloud"></div>
     <div class="cloud"></div>
-
 </div>
 
-<!-- KALKULATOR -->
 <div class="container">
 
+    <!-- HEADER -->
     <div class="header">
-        <h1>CALCULATOR</h1>
+        <h1>PIXEL CALCULATOR</h1>
         <p>SUPER MODULAR GAME</p>
     </div>
 
-    <!-- ICON MARIO -->
+    <!-- DEKORASI -->
     <div class="decoration">
         <span>🍄</span>
         <span>🪙</span>
@@ -352,131 +292,217 @@ button {
         <span>🧱</span>
     </div>
 
-    <!-- INPUT ANGKA -->
-    <div class="input-group">
+    <!-- ================================= -->
+    <!-- KALKULATOR 1: ARITMATIKA MODULAR -->
+    <!-- ================================= -->
 
+    <div class="section-title">
+        🍄 KALKULATOR ARITMATIKA MODULAR
+    </div>
+
+    <div class="input-group">
         <label>BILANGAN (a)</label>
-
-        <input
-            type="number"
-            id="angka"
-            placeholder="Masukkan bilangan a"
-            step="1"
-        >
-
+        <input type="number" id="angka"
+        placeholder="Masukkan bilangan a" step="1">
     </div>
 
-    <!-- INPUT MODULUS -->
     <div class="input-group">
-
         <label>MODULUS (m)</label>
-
-        <input
-            type="number"
-            id="modulus"
-            placeholder="Masukkan modulus m"
-            step="1"
-        >
-
+        <input type="number" id="modulus"
+        placeholder="Masukkan modulus m" step="1">
     </div>
 
-    <!-- BUTTON HITUNG -->
-    <button class="calculate" onclick="hitung()">
+    <button class="calculate" onclick="hitungModular()">
         ▶ HITUNG HASIL
     </button>
 
-    <!-- BUTTON RESET -->
-    <button class="reset" onclick="resetKalkulator()">
+    <button class="reset" onclick="resetModular()">
         ↻ RESET GAME
     </button>
 
-    <!-- HASIL -->
-    <div class="result" id="result">
-
+    <div class="result" id="hasilModular">
         <h3>⭐ LEVEL COMPLETED ⭐</h3>
-
-        <p id="rumus"></p>
-
+        <p id="rumusModular"></p>
         <p>HASIL MODULAR:</p>
+        <strong id="nilaiModular"></strong>
+    </div>
 
-        <strong id="hasil"></strong>
+    <!-- PEMISAH -->
+    <hr class="separator">
 
+    <!-- ============================== -->
+    <!-- KALKULATOR 2: KONGRUENSI -->
+    <!-- ============================== -->
+
+    <div class="section-title congruence">
+        ⭐ KALKULATOR KONGRUENSI
+    </div>
+
+    <div class="input-group">
+        <label>BILANGAN PERTAMA (a)</label>
+        <input type="number" id="kongA"
+        placeholder="Masukkan bilangan a" step="1">
+    </div>
+
+    <div class="input-group">
+        <label>BILANGAN KEDUA (b)</label>
+        <input type="number" id="kongB"
+        placeholder="Masukkan bilangan b" step="1">
+    </div>
+
+    <div class="input-group">
+        <label>MODULUS (m)</label>
+        <input type="number" id="kongM"
+        placeholder="Masukkan modulus m" step="1">
+    </div>
+
+    <button class="calculate" onclick="hitungKongruensi()">
+        ▶ CEK KONGRUENSI
+    </button>
+
+    <button class="reset" onclick="resetKongruensi()">
+        ↻ RESET GAME
+    </button>
+
+    <div class="result congruent" id="hasilKongruensi">
+        <h3>⭐ CONGRUENCE RESULT ⭐</h3>
+        <p id="rumusKongruensi"></p>
+        <p>STATUS KONGRUENSI:</p>
+        <strong id="nilaiKongruensi"></strong>
+        <p id="keteranganKongruensi"></p>
     </div>
 
     <!-- FOOTER -->
     <div class="footer">
-
         🍄 SITI AFRILIANI ROSIPAH 🍄
-
         <br>
-
         262505004
-
+        <br>
+        PIXEL WORLD © 2026
     </div>
 
 </div>
 
-<!-- JAVASCRIPT -->
 <script>
 
-function hitung() {
+/* ===================================
+   KALKULATOR ARITMATIKA MODULAR
+=================================== */
+
+function hitungModular() {
 
     let aInput = document.getElementById("angka").value;
     let mInput = document.getElementById("modulus").value;
 
-    // Validasi input
     if (aInput === "" || mInput === "") {
-
         alert("Masukkan bilangan a dan modulus m!");
-
         return;
     }
 
     let a = Number(aInput);
     let m = Number(mInput);
 
-    // Validasi bilangan bulat
-    if (
-        !Number.isSafeInteger(a) ||
-        !Number.isSafeInteger(m)
-    ) {
-
+    if (!Number.isSafeInteger(a) ||
+        !Number.isSafeInteger(m)) {
         alert("Masukkan bilangan bulat yang valid!");
-
         return;
     }
 
-    // Validasi modulus
     if (m <= 0) {
-
         alert("Modulus harus lebih besar dari 0!");
-
         return;
     }
 
     // Rumus aritmatika modular
     let hasil = ((a % m) + m) % m;
 
-    // Menampilkan hasil
-    document.getElementById("result").style.display = "block";
+    document.getElementById("hasilModular").style.display = "block";
 
-    document.getElementById("rumus").innerText =
+    document.getElementById("rumusModular").innerText =
         `${a} mod ${m}`;
 
-    document.getElementById("hasil").innerText =
+    document.getElementById("nilaiModular").innerText =
         hasil;
-
 }
 
-// Fungsi reset
-function resetKalkulator() {
+function resetModular() {
 
     document.getElementById("angka").value = "";
-
     document.getElementById("modulus").value = "";
 
-    document.getElementById("result").style.display = "none";
+    document.getElementById("hasilModular").style.display = "none";
+}
 
+
+/* ===================================
+   KALKULATOR KONGRUENSI
+=================================== */
+
+function hitungKongruensi() {
+
+    let aInput = document.getElementById("kongA").value;
+    let bInput = document.getElementById("kongB").value;
+    let mInput = document.getElementById("kongM").value;
+
+    if (aInput === "" || bInput === "" || mInput === "") {
+        alert("Masukkan semua bilangan kongruensi!");
+        return;
+    }
+
+    let a = Number(aInput);
+    let b = Number(bInput);
+    let m = Number(mInput);
+
+    if (!Number.isSafeInteger(a) ||
+        !Number.isSafeInteger(b) ||
+        !Number.isSafeInteger(m)) {
+        alert("Masukkan bilangan bulat yang valid!");
+        return;
+    }
+
+    if (m <= 0) {
+        alert("Modulus harus lebih besar dari 0!");
+        return;
+    }
+
+    // Menghitung sisa masing-masing bilangan
+    let sisaA = ((a % m) + m) % m;
+    let sisaB = ((b % m) + m) % m;
+
+    // Memeriksa kongruensi
+    let kongruen = (sisaA === sisaB);
+
+    document.getElementById("hasilKongruensi").style.display = "block";
+
+    document.getElementById("rumusKongruensi").innerText =
+        `${a} ≡ ${b} (mod ${m})`;
+
+    if (kongruen) {
+
+        document.getElementById("nilaiKongruensi").innerText =
+            "BENAR ✓";
+
+        document.getElementById("keteranganKongruensi").innerText =
+            `Sisa: ${sisaA} = ${sisaB}`;
+
+    } else {
+
+        document.getElementById("nilaiKongruensi").innerText =
+            "SALAH ✗";
+
+        document.getElementById("keteranganKongruensi").innerText =
+            `Sisa: ${sisaA} ≠ ${sisaB}`;
+
+    }
+}
+
+function resetKongruensi() {
+
+    document.getElementById("kongA").value = "";
+    document.getElementById("kongB").value = "";
+    document.getElementById("kongM").value = "";
+
+    document.getElementById("hasilKongruensi").style.display = "none";
 }
 
 </script>
