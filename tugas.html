@@ -1,0 +1,483 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biodata Diri - Mario Pixel</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(#70c5ce, #b5e8e8);
+    color: #333;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Awan */
+.cloud {
+    position: fixed;
+    width: 120px;
+    height: 40px;
+    background: white;
+    border-radius: 50px;
+    opacity: .8;
+    z-index: -1;
+    animation: moveCloud 25s linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+    content: "";
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+}
+
+.cloud::before {
+    width: 55px;
+    height: 55px;
+    top: -25px;
+    left: 20px;
+}
+
+.cloud::after {
+    width: 65px;
+    height: 65px;
+    top: -35px;
+    right: 15px;
+}
+
+.cloud:nth-child(1) { top: 100px; left: -150px; }
+.cloud:nth-child(2) { top: 260px; left: -300px; animation-delay: 8s; }
+.cloud:nth-child(3) { top: 430px; left: -200px; animation-delay: 15s; }
+
+@keyframes moveCloud {
+    from { transform: translateX(-150px); }
+    to { transform: translateX(120vw); }
+}
+
+/* Header */
+header {
+    background: #e52521;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+    border-bottom: 8px solid #a81513;
+}
+
+header h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 22px;
+    line-height: 1.8;
+}
+
+header p {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Navigasi */
+nav {
+    background: #1769aa;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 800;
+    padding: 10px 15px;
+    border: 3px solid white;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background: #fbd000;
+    color: #333;
+}
+
+/* Konten */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 35px auto;
+}
+
+.card {
+    background: #fff8dc;
+    border: 5px solid #1769aa;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 6px 6px 0 #333;
+}
+
+h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    color: #e52521;
+    margin-bottom: 25px;
+    line-height: 1.8;
+}
+
+/* Biodata */
+.biodata {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.foto {
+    width: 160px;
+    height: 180px;
+    border: 5px solid #1769aa;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.data p {
+    margin: 12px 0;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* Bukti belajar */
+.bukti-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.bukti-card {
+    background: #d9f1ff;
+    border: 4px solid #1769aa;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+}
+
+.bukti-card h3 {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #e52521;
+}
+
+.bukti-card input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #1769aa;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+button {
+    background: #e52521;
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 800;
+    width: 100%;
+    margin-top: 5px;
+}
+
+button:hover {
+    background: #a81513;
+}
+
+.hasil-link {
+    display: none;
+    margin-top: 12px;
+    background: #fbd000;
+    color: #222;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 800;
+    font-size: 12px;
+}
+
+.hasil-link:hover {
+    background: #ffc400;
+}
+
+.keterangan {
+    font-size: 12px;
+    margin-top: 10px;
+    color: #555;
+}
+
+/* Footer */
+footer {
+    background: #1769aa;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .bukti-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    header h1 {
+        font-size: 15px;
+    }
+
+    .bukti-grid {
+        grid-template-columns: 1fr;
+    }
+
+    h2 {
+        font-size: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Awan background -->
+<div class="cloud"></div>
+<div class="cloud"></div>
+<div class="cloud"></div>
+
+<header>
+    <h1>MY BIODATA</h1>
+    <p>Welcome to My Pixel World!</p>
+</header>
+
+<nav>
+    <a href="#beranda">Beranda</a>
+    <a href="#biodata">Biodata</a>
+    <a href="#bukti">Bukti Belajar</a>
+</nav>
+
+<div class="container">
+
+    <!-- Beranda -->
+    <section class="card" id="beranda">
+        <h2>WELCOME PLAYER!</h2>
+        <p>
+            Selamat datang di website biodata saya.
+            Website ini dibuat dengan tema Mario Pixel
+            sebagai tempat memperkenalkan diri dan
+            menampilkan hasil pembelajaran saya.
+        </p>
+    </section>
+
+    <!-- Biodata -->
+    <section class="card" id="biodata">
+        <h2>MY BIODATA</h2>
+
+        <div class="biodata">
+            <div class="foto">
+                <img src="foto.jpg" alt="Foto Profil"
+                     onerror="this.style.display='none'; this.parentElement.innerHTML='Masukkan foto.jpg di folder yang sama';">
+            </div>
+
+            <div class="data">
+                <p>Nama: Siti Afriliani Rosipah</p>
+                <p>Jurusan: TJKT</p>
+                <p>Sekolah: SMK</p>
+                <p>Hobi: Mendengarkan Musik</p>
+                <p>Motivasi: Terus Belajar dan Berkembang</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bukti Belajar -->
+    <section class="card" id="bukti">
+        <h2>BUKTI BELAJAR</h2>
+
+        <p style="margin-bottom:20px;">
+            Tambahkan hasil project pembelajaran beserta link-nya
+            pada setiap kolom berikut.
+        </p>
+
+        <div class="bukti-grid">
+
+            <div class="bukti-card">
+                <h3>01. Kalkulator Modular</h3>
+                <input type="text" id="judul1"
+                       placeholder="Judul project">
+                <input type="url" id="link1"
+                       placeholder="https://link-project">
+                <button onclick="simpanBukti(1)">SIMPAN</button>
+                <a id="hasil1" class="hasil-link"
+                   href="#" target="_blank" rel="noopener">
+                    BUKA PROJECT
+                </a>
+                <p class="keterangan" id="status1"></p>
+            </div>
+
+            <div class="bukti-card">
+                <h3>02. Kalkulator Kongruensi</h3>
+                <input type="text" id="judul2"
+                       placeholder="Judul project">
+                <input type="url" id="link2"
+                       placeholder="https://link-project">
+                <button onclick="simpanBukti(2)">SIMPAN</button>
+                <a id="hasil2" class="hasil-link"
+                   href="#" target="_blank" rel="noopener">
+                    BUKA PROJECT
+                </a>
+                <p class="keterangan" id="status2"></p>
+            </div>
+
+            <div class="bukti-card">
+                <h3>03. Kalkulator Matriks</h3>
+                <input type="text" id="judul3"
+                       placeholder="Judul project">
+                <input type="url" id="link3"
+                       placeholder="https://link-project">
+                <button onclick="simpanBukti(3)">SIMPAN</button>
+                <a id="hasil3" class="hasil-link"
+                   href="#" target="_blank" rel="noopener">
+                    BUKA PROJECT
+                </a>
+                <p class="keterangan" id="status3"></p>
+            </div>
+
+            <div class="bukti-card">
+                <h3>04. Project Lainnya</h3>
+                <input type="text" id="judul4"
+                       placeholder="Judul project">
+                <input type="url" id="link4"
+                       placeholder="https://link-project">
+                <button onclick="simpanBukti(4)">SIMPAN</button>
+                <a id="hasil4" class="hasil-link"
+                   href="#" target="_blank" rel="noopener">
+                    BUKA PROJECT
+                </a>
+                <p class="keterangan" id="status4"></p>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>© 2026 My Biodata | Mario Pixel Theme</p>
+</footer>
+
+<script>
+const KEY_BUKTI = "buktiBelajar";
+
+function ambilData() {
+    try {
+        return JSON.parse(localStorage.getItem(KEY_BUKTI)) || {};
+    } catch (error) {
+        return {};
+    }
+}
+
+function simpanBukti(nomor) {
+    const judul = document.getElementById("judul" + nomor)
+        .value.trim();
+
+    const link = document.getElementById("link" + nomor)
+        .value.trim();
+
+    const status = document.getElementById("status" + nomor);
+    const hasil = document.getElementById("hasil" + nomor);
+
+    if (!judul || !link) {
+        status.textContent = "Isi judul dan link terlebih dahulu!";
+        return;
+    }
+
+    let alamat;
+
+    try {
+        alamat = new URL(link);
+    } catch (error) {
+        status.textContent = "Link tidak valid!";
+        return;
+    }
+
+    if (alamat.protocol !== "http:" &&
+        alamat.protocol !== "https:") {
+        status.textContent = "Gunakan link HTTP atau HTTPS!";
+        return;
+    }
+
+    const data = ambilData();
+
+    data[nomor] = {
+        judul: judul,
+        link: alamat.href
+    };
+
+    try {
+        localStorage.setItem(KEY_BUKTI, JSON.stringify(data));
+        tampilkanBukti();
+
+        status.textContent = "Project berhasil disimpan!";
+    } catch (error) {
+        status.textContent = "Gagal menyimpan data di browser.";
+    }
+}
+
+function tampilkanBukti() {
+    const data = ambilData();
+
+    for (let nomor = 1; nomor <= 4; nomor++) {
+        const item = data[nomor];
+
+        const judul = document.getElementById("judul" + nomor);
+        const link = document.getElementById("link" + nomor);
+        const hasil = document.getElementById("hasil" + nomor);
+
+        if (item) {
+            judul.value = item.judul;
+            link.value = item.link;
+
+            hasil.href = item.link;
+            hasil.textContent = "BUKA: " + item.judul;
+            hasil.style.display = "block";
+        } else {
+            hasil.style.display = "none";
+        }
+    }
+}
+
+tampilkanBukti();
+</script>
+
+</body>
+</html>
