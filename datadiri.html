@@ -471,13 +471,41 @@ body {
 
     <!-- FOOTER -->
 
-    <div class="footer">
+   <!-- BUKTI BELAJAR -->
+<div class="footer">
 
+    <button class="footer-btn" onclick="toggleBukti()">
         🍄 BUKTI BELAJAR 🍄
-
         <br>
+        MATEMATIKA INFORMATIKA
+    </button>
 
-        <link rel="stylesheet" href="modulo.html">
+    <div id="buktiBelajar" class="bukti-content">
+
+        <h3>📚 MY LEARNING PROJECT</h3>
+
+        <div id="daftarProject"></div>
+
+        <h3>✨ TAMBAHKAN HASIL BELAJAR</h3>
+
+        <input type="text" id="judul"
+            placeholder="Nama project">
+
+        <textarea id="deskripsi"
+            placeholder="Deskripsi project"></textarea>
+
+        <input type="url" id="link"
+            placeholder="Masukkan link project">
+
+        <button onclick="tambahProject()">
+            + TAMBAHKAN PROJECT
+        </button>
+
+    </div>
+
+</div>
+
+        
 
         <br>
 
