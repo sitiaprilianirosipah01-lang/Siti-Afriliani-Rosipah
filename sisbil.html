@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kalkulator Sistem Bilangan</title>
+<title>Mario Pixel Number Calculator</title>
 
 <style>
 * {
@@ -16,220 +16,342 @@
 body {
     font-family: 'Courier New', monospace;
     min-height: 100vh;
-    background: linear-gradient(#a8e6cf, #dcedc1, #f1f8e9);
+    background: #65c9f5;
+    color: #292b50;
     overflow-x: hidden;
-    color: #24543b;
+    image-rendering: pixelated;
 }
 
-/* Awan */
+/* SKY */
+.sky {
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    background: linear-gradient(#55c7f5, #a8e9ff);
+}
+
+/* PIXEL CLOUD */
 .cloud {
     position: fixed;
-    top: 10%;
-    left: -200px;
-    width: 150px;
-    height: 45px;
+    width: 75px;
+    height: 25px;
     background: white;
-    border-radius: 50px;
-    opacity: .8;
-    animation: moveCloud 35s linear infinite;
-    z-index: -1;
+    top: 12%;
+    left: -150px;
+    box-shadow:
+        25px -25px white,
+        50px -25px white,
+        75px 0 white,
+        25px 25px white,
+        50px 25px white;
+    animation: cloudMove 35s linear infinite;
+    z-index: -2;
 }
 
-.cloud::before,
-.cloud::after {
-    content: "";
-    position: absolute;
-    background: white;
-    border-radius: 50%;
-}
-
-.cloud::before {
-    width: 65px;
-    height: 65px;
-    top: -30px;
-    left: 25px;
-}
-
-.cloud::after {
-    width: 80px;
-    height: 80px;
-    top: -40px;
-    right: 20px;
-}
-
-.cloud:nth-child(2) {
+.cloud:nth-of-type(3) {
     top: 30%;
     animation-duration: 45s;
     animation-delay: 5s;
     transform: scale(.7);
 }
 
-.cloud:nth-child(3) {
-    top: 55%;
+.cloud:nth-of-type(4) {
+    top: 50%;
     animation-duration: 55s;
     animation-delay: 10s;
     transform: scale(1.2);
 }
 
-@keyframes moveCloud {
-    from { left: -200px; }
+.cloud:nth-of-type(5) {
+    top: 70%;
+    animation-duration: 48s;
+    animation-delay: 15s;
+}
+
+@keyframes cloudMove {
+    from { left: -180px; }
     to { left: 110%; }
 }
 
-/* Header */
+/* SUN */
+.sun {
+    position: fixed;
+    top: 45px;
+    right: 9%;
+    width: 65px;
+    height: 65px;
+    background: #ffdf43;
+    box-shadow:
+        15px -15px #ffdf43,
+        -15px 15px #ffdf43,
+        15px 15px #ffdf43,
+        -15px -15px #ffdf43;
+    z-index: -2;
+}
+
+/* HEADER */
 header {
     text-align: center;
-    padding: 35px 15px 15px;
+    padding: 45px 15px 20px;
 }
 
 header h1 {
-    font-size: 30px;
-    color: #246b45;
-    text-shadow: 2px 2px white;
+    font-size: 29px;
+    color: #fff;
+    text-shadow:
+        3px 3px #e84b32,
+        5px 5px #263c78;
+    line-height: 1.5;
 }
 
 header p {
-    margin-top: 10px;
-    font-size: 13px;
+    margin-top: 12px;
+    color: #174d83;
+    font-weight: bold;
+    background: #fff;
+    display: inline-block;
+    padding: 9px 15px;
+    border: 3px solid #263c78;
+    box-shadow: 4px 4px #263c78;
 }
 
-/* Container */
+/* MAIN CONTAINER */
 .container {
     max-width: 850px;
-    margin: 25px auto;
-    padding: 25px;
-    background: rgba(255,255,255,.85);
-    border: 3px solid #79b88c;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(35,90,55,.2);
+    margin: 25px auto 100px;
+    padding: 28px;
+    background: #fff4ce;
+    border: 5px solid #a84b27;
+    box-shadow:
+        8px 8px 0 #263c78,
+        12px 12px 0 rgba(0,0,0,.15);
+    position: relative;
 }
 
 .section-title {
     text-align: center;
-    margin-bottom: 20px;
-    color: #347c50;
+    color: #e44a2e;
+    margin-bottom: 25px;
+    font-size: 19px;
+    text-shadow: 2px 2px #ffd45a;
 }
 
-/* Input */
+/* INPUT */
 .input-group {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     font-weight: bold;
+    color: #264a82;
 }
 
 input, select {
     width: 100%;
-    padding: 13px;
-    border: 2px solid #8fc9a0;
-    border-radius: 10px;
+    padding: 14px;
+    background: white;
+    border: 3px solid #3265a5;
+    font-family: inherit;
     font-size: 16px;
     outline: none;
-    background: #f5fff6;
-    color: #24543b;
+    color: #253d69;
 }
 
 input:focus, select:focus {
-    border-color: #347c50;
+    border-color: #e84b32;
+    box-shadow: 3px 3px #ffd34e;
 }
 
-/* Button */
+/* BUTTON */
 .buttons {
     display: flex;
-    gap: 10px;
-    margin-bottom: 25px;
+    gap: 15px;
+    margin-bottom: 30px;
 }
 
 button {
     flex: 1;
-    padding: 12px;
-    border: none;
-    border-radius: 10px;
-    background: #4b9665;
+    padding: 14px 10px;
+    border: 3px solid #7c2d20;
+    background: #e94b32;
     color: white;
     font-weight: bold;
-    cursor: pointer;
-    transition: .3s;
     font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 4px 4px #263c78;
+    transition: .15s;
 }
 
 button:hover {
-    background: #286b43;
+    background: #ff704d;
     transform: translateY(-3px);
 }
 
+button:active {
+    transform: translate(3px, 3px);
+    box-shadow: 1px 1px #263c78;
+}
+
 .reset {
-    background: #d77d70;
+    background: #326ab0;
+    border-color: #1c416f;
 }
 
 .reset:hover {
-    background: #b9574a;
+    background: #5089cf;
 }
 
-/* Hasil */
+/* RESULT */
 .results {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 20px;
 }
 
 .result-card {
-    padding: 18px;
-    background: #e6f5e9;
-    border: 2px solid #9bcca7;
-    border-radius: 12px;
+    background: #fff;
+    border: 4px solid #3265a5;
+    padding: 20px;
     text-align: center;
+    box-shadow: 5px 5px #d6a936;
 }
 
 .result-card h3 {
-    margin-bottom: 12px;
-    color: #347c50;
+    color: #e94b32;
+    margin-bottom: 15px;
 }
 
 .result-value {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
+    color: #244d83;
     overflow-wrap: anywhere;
     min-height: 25px;
 }
 
 .copy {
-    margin-top: 12px;
-    padding: 8px;
-    font-size: 12px;
+    margin-top: 18px;
+    padding: 10px;
+    background: #48a84f;
+    border-color: #237b34;
+    box-shadow: 3px 3px #244d83;
 }
 
+/* INFORMATION */
 .info {
-    margin-top: 25px;
-    padding: 15px;
-    background: #f0f8e9;
-    border-radius: 10px;
-    line-height: 1.7;
+    margin-top: 30px;
+    background: #d8f4ff;
+    border: 3px dashed #3265a5;
+    padding: 18px;
+    line-height: 1.9;
+    color: #244d83;
     font-size: 13px;
+}
+
+.info h3 {
+    margin-bottom: 8px;
+}
+
+/* PIXEL GROUND */
+.ground {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 45px;
+    background: #a65b30;
+    border-top: 12px solid #48a84f;
+    z-index: -1;
+}
+
+.ground::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    width: 100%;
+    height: 8px;
+    background: repeating-linear-gradient(
+        90deg,
+        #3d9b43 0 35px,
+        #72c94d 35px 70px
+    );
+}
+
+/* PIPE */
+.pipe {
+    position: fixed;
+    bottom: 45px;
+    left: 5%;
+    width: 75px;
+    height: 110px;
+    background: #36b84d;
+    border: 5px solid #17752f;
+    z-index: -1;
+}
+
+.pipe::before {
+    content: "";
+    position: absolute;
+    top: -22px;
+    left: -15px;
+    width: 90px;
+    height: 23px;
+    background: #48d65b;
+    border: 5px solid #17752f;
+}
+
+/* COIN */
+.coin {
+    position: fixed;
+    right: 9%;
+    bottom: 90px;
+    width: 25px;
+    height: 35px;
+    background: #ffcf36;
+    border: 5px solid #e69a18;
+    animation: coinJump 1s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes coinJump {
+    from { transform: translateY(0); }
+    to { transform: translateY(-18px); }
 }
 
 footer {
     text-align: center;
     padding: 20px;
+    color: #174d83;
+    font-weight: bold;
     font-size: 12px;
-    color: #347c50;
+    margin-bottom: 45px;
 }
 
-@media(max-width: 550px) {
+/* RESPONSIVE */
+@media(max-width: 600px) {
     .results {
         grid-template-columns: 1fr;
     }
 
     header h1 {
-        font-size: 22px;
+        font-size: 21px;
     }
 
     .container {
-        margin: 15px;
+        margin: 20px 15px 100px;
         padding: 18px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .pipe {
+        left: 1%;
+        transform: scale(.7);
+        transform-origin: bottom left;
     }
 }
 </style>
@@ -237,27 +359,43 @@ footer {
 
 <body>
 
+<div class="sky"></div>
+
+<!-- Awan -->
+<div class="cloud"></div>
 <div class="cloud"></div>
 <div class="cloud"></div>
 <div class="cloud"></div>
 
+<!-- Matahari -->
+<div class="sun"></div>
+
+<!-- Koin dan pipa -->
+<div class="coin"></div>
+<div class="pipe"></div>
+
 <header>
-    <h1>🌿 Number System Calculator</h1>
-    <p>Pixel Green Edition | Kalkulator Sistem Bilangan</p>
+    <h1>🍄 MARIO NUMBER SYSTEM</h1>
+    <p>★ PIXEL WORLD CALCULATOR ★</p>
 </header>
 
 <div class="container">
 
-    <h2 class="section-title">✦ Konversi Sistem Bilangan ✦</h2>
+    <h2 class="section-title">
+        🍄 CONVERT YOUR NUMBER 🍄
+    </h2>
 
     <div class="input-group">
-        <label>Masukkan Angka</label>
-        <input type="text" id="numberInput"
-        placeholder="Contoh: 1010 atau 25">
+        <label>🎮 Masukkan Angka</label>
+        <input
+            type="text"
+            id="numberInput"
+            placeholder="Masukkan angka di sini..."
+            onkeydown="if(event.key==='Enter') convert()">
     </div>
 
     <div class="input-group">
-        <label>Pilih Sistem Bilangan Asal</label>
+        <label>🧱 Pilih Sistem Bilangan</label>
         <select id="baseInput">
             <option value="2">Biner (Basis 2)</option>
             <option value="8">Oktal (Basis 8)</option>
@@ -267,79 +405,99 @@ footer {
     </div>
 
     <div class="buttons">
-        <button onclick="convert()">KONVERSI</button>
-        <button class="reset" onclick="resetAll()">RESET</button>
+        <button onclick="convert()">⭐ KONVERSI</button>
+        <button class="reset" onclick="resetAll()">🔄 RESET</button>
     </div>
 
-    <h3 class="section-title">✦ Hasil Konversi ✦</h3>
+    <h2 class="section-title">
+        🏆 HASIL KONVERSI 🏆
+    </h2>
 
     <div class="results">
 
         <div class="result-card">
-            <h3>01. BINER</h3>
+            <h3>🟢 BINER</h3>
             <div class="result-value" id="binary">-</div>
-            <button class="copy" onclick="copyResult('binary')">SALIN</button>
+            <button class="copy" onclick="copyResult('binary')">
+                📋 SALIN
+            </button>
         </div>
 
         <div class="result-card">
-            <h3>02. OKTAL</h3>
+            <h3>🟡 OKTAL</h3>
             <div class="result-value" id="octal">-</div>
-            <button class="copy" onclick="copyResult('octal')">SALIN</button>
+            <button class="copy" onclick="copyResult('octal')">
+                📋 SALIN
+            </button>
         </div>
 
         <div class="result-card">
-            <h3>03. DESIMAL</h3>
+            <h3>🔵 DESIMAL</h3>
             <div class="result-value" id="decimal">-</div>
-            <button class="copy" onclick="copyResult('decimal')">SALIN</button>
+            <button class="copy" onclick="copyResult('decimal')">
+                📋 SALIN
+            </button>
         </div>
 
         <div class="result-card">
-            <h3>04. HEKSADESIMAL</h3>
+            <h3>🔴 HEKSADESIMAL</h3>
             <div class="result-value" id="hexadecimal">-</div>
-            <button class="copy" onclick="copyResult('hexadecimal')">SALIN</button>
+            <button class="copy" onclick="copyResult('hexadecimal')">
+                📋 SALIN
+            </button>
         </div>
 
     </div>
 
     <div class="info">
-        <b>📚 Informasi Sistem Bilangan</b><br>
-        • Biner: menggunakan angka 0 dan 1.<br>
-        • Oktal: menggunakan angka 0 sampai 7.<br>
-        • Desimal: menggunakan angka 0 sampai 9.<br>
-        • Heksadesimal: menggunakan angka 0 sampai 9 dan huruf A sampai F.
+        <h3>📚 INFORMATION BOX</h3>
+        🟢 Biner: Menggunakan angka 0 dan 1.<br>
+        🟡 Oktal: Menggunakan angka 0 sampai 7.<br>
+        🔵 Desimal: Menggunakan angka 0 sampai 9.<br>
+        🔴 Heksadesimal: Menggunakan angka 0 sampai 9
+        dan huruf A sampai F.
+        <br><br>
+        ⭐ Let's play and learn mathematics!
     </div>
 
 </div>
 
+<div class="ground"></div>
+
 <footer>
-    © 2026 | Number System Calculator 🌱
+    ★ MARIO PIXEL WORLD © 2026 ★
+    <br>
+    THANK YOU FOR PLAYING!
 </footer>
 
 <script>
 
 function convert() {
 
-    let input = document.getElementById("numberInput").value.trim();
-    let base = parseInt(document.getElementById("baseInput").value);
+    let input = document
+        .getElementById("numberInput")
+        .value.trim();
+
+    let base = parseInt(
+        document.getElementById("baseInput").value
+    );
 
     if (input === "") {
-        alert("Silakan masukkan angka terlebih dahulu!");
+        alert("🍄 Masukkan angka terlebih dahulu!");
         return;
     }
 
-    // Menghilangkan spasi di tengah input
     input = input.replace(/\s/g, "");
 
     let decimalValue = parseInt(input, base);
 
-    // Validasi angka
     if (
         isNaN(decimalValue) ||
         !Number.isSafeInteger(decimalValue) ||
         decimalValue < 0 ||
         decimalValue.toString(base).toUpperCase() !== input.toUpperCase()
     ) {
-        alert("Angka tidak valid untuk sistem bilangan yang dipilih!");
+        alert("❌ Angka tidak valid! Periksa sistem bilangan yang dipilih.");
         return;
     }
 
@@ -380,8 +538,8 @@ function copyResult(id) {
     }
 
     navigator.clipboard.writeText(value)
-    .then(() => alert("Hasil berhasil disalin!"))
-    .catch(() => alert("Tidak dapat menyalin hasil."));
+    .then(() => alert("⭐ Berhasil disalin!"))
+    .catch(() => alert("Gagal menyalin hasil."));
 
 }
 
