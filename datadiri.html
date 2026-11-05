@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Profile - Pixel World</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background: #55b9ed;
+    min-height: 100vh;
+    padding: 40px 15px;
+    overflow-x: hidden;
+    color: #663300;
+}
+
+/* BACKGROUND LANGIT */
+
+.sky {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(#55b9ed, #8bd5ff);
+    overflow: hidden;
+    z-index: -1;
+}
+
+.cloud {
+    position: absolute;
+    width: 65px;
+    height: 20px;
+    background: white;
+
+    box-shadow:
+        0 5px 0 #dcecff,
+        0 10px 0 #b9d8f5,
+        10px -10px 0 white,
+        10px -15px 0 white,
+        25px -20px 0 white,
+        25px -15px 0 white,
+        40px -10px 0 white,
+        40px -5px 0 white,
+        50px 0 0 white,
+        50px 5px 0 #dcecff,
+        60px 10px 0 #b9d8f5;
+
+    animation: cloudMove 30s linear infinite;
+}
+
+.cloud:nth-child(1) { top: 10%; left: 5%; }
+.cloud:nth-child(2) { top: 20%; left: 30%; animation-duration: 40s; }
+.cloud:nth-child(3) { top: 15%; left: 70%; animation-duration: 35s; }
+.cloud:nth-child(4) { top: 40%; left: 85%; animation-duration: 45s; }
+.cloud:nth-child(5) { top: 55%; left: 5%; animation-duration: 38s; }
+.cloud:nth-child(6) { top: 65%; left: 75%; animation-duration: 42s; }
+.cloud:nth-child(7) { top: 80%; left: 25%; animation-duration: 50s; }
+.cloud:nth-child(8) { top: 85%; left: 60%; animation-duration: 35s; }
+.cloud:nth-child(9) { top: 5%; left: 90%; animation-duration: 44s; }
+.cloud:nth-child(10) { top: 30%; left: 45%; animation-duration: 48s; }
+
+@keyframes cloudMove {
+    from { translate: -30px 0; }
+    to { translate: 100px 0; }
+}
+
+/* CONTAINER */
+
+.container {
+    max-width: 950px;
+    width: 100%;
+    margin: auto;
+    background: #fff5d6;
+    border: 6px solid #663300;
+    box-shadow: 10px 10px 0 #333;
+    padding: 25px;
+    position: relative;
+    z-index: 1;
+}
+
+/* HEADER */
+
+.header {
+    background: #e83c32;
+    color: white;
+    border: 4px solid #663300;
+    text-align: center;
+    padding: 30px 10px;
+    line-height: 2;
+}
+
+.header h1 {
+    font-size: 23px;
+}
+
+.header p {
+    font-size: 10px;
+    margin-top: 10px;
+}
+
+/* DEKORASI */
+
+.decoration {
+    display: flex;
+    justify-content: space-around;
+    font-size: 30px;
+    margin: 25px 0;
+}
+
+/* PROFILE */
+
+.profile {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    gap: 25px;
+    align-items: start;
+}
+
+/* FOTO */
+
+.photo-box {
+    background: #ffcf35;
+    border: 4px solid #663300;
+    padding: 12px;
+    text-align: center;
+}
+
+.photo {
+    width: 100%;
+    height: 230px;
+    background: #d8ecff;
+    border: 4px solid #663300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-placeholder {
+    font-size: 55px;
+}
+
+.photo-box p {
+    font-size: 9px;
+    margin-top: 12px;
+    line-height: 2;
+}
+
+/* SECTION */
+
+.section {
+    background: white;
+    border: 4px solid #663300;
+    margin-bottom: 20px;
+    padding: 18px;
+}
+
+.section h2 {
+    background: #e83c32;
+    color: white;
+    padding: 13px 10px;
+    font-size: 11px;
+    margin-bottom: 15px;
+    line-height: 2;
+}
+
+.section.green h2 {
+    background: #38b54a;
+}
+
+.section.blue h2 {
+    background: #2879d0;
+}
+
+/* BIODATA */
+
+.bio-list {
+    display: grid;
+    grid-template-columns: 120px 10px 1fr;
+    gap: 14px 5px;
+    font-size: 10px;
+    line-height: 2;
+}
+
+.bio-list .value {
+    overflow-wrap: anywhere;
+}
+
+/* DESKRIPSI */
+
+.description {
+    font-size: 10px;
+    line-height: 2.5;
+    text-align: justify;
+}
+
+/* SKILL */
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill {
+    background: #ffcf35;
+    border: 3px solid #663300;
+    padding: 12px;
+    font-size: 9px;
+    line-height: 1.8;
+}
+
+/* HOBI */
+
+.hobbies {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.hobby {
+    background: #d5f5c7;
+    border: 3px solid #36913d;
+    padding: 15px 5px;
+    text-align: center;
+    font-size: 9px;
+    line-height: 2.5;
+}
+
+.hobby span {
+    display: block;
+    font-size: 25px;
+}
+
+/* FOOTER */
+
+.footer {
+    background: #e83c32;
+    color: white;
+    text-align: center;
+    border: 4px solid #663300;
+    padding: 18px;
+    margin-top: 20px;
+    font-size: 9px;
+    line-height: 2.5;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 700px) {
+
+    .profile {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-box {
+        max-width: 250px;
+        margin: auto;
+        width: 100%;
+    }
+
+    .header h1 {
+        font-size: 16px;
+    }
+
+    .bio-list {
+        grid-template-columns: 95px 8px 1fr;
+        font-size: 8px;
+        gap: 10px 3px;
+    }
+
+    .description {
+        font-size: 8px;
+    }
+
+    .hobbies {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .container {
+        padding: 15px;
+    }
+}
+
+@media(max-width: 380px) {
+    .bio-list {
+        grid-template-columns: 80px 5px 1fr;
+        font-size: 7px;
+    }
+
+    .section {
+        padding: 10px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND AWAN -->
+
+<div class="sky">
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+</div>
+
+<!-- CONTAINER UTAMA -->
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <div class="header">
+        <h1>MY PROFILE</h1>
+        <p>WELCOME TO MY PIXEL WORLD</p>
+    </div>
+
+    <!-- DEKORASI -->
+
+    <div class="decoration">
+        <span>🍄</span>
+        <span>🪙</span>
+        <span>⭐</span>
+        <span>🧱</span>
+    </div>
+
+    <!-- FOTO DAN BIODATA -->
+
+    <div class="profile">
+
+        <!-- FOTO PROFIL -->
+
+        <div class="photo-box">
+
+            <div class="photo">
+
+                <!-- GANTI FOTO.jpg DENGAN FOTO SENDIRI -->
+
+                <img src="foto.jpg"
+                     alt="Foto Profil"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+
+                <div class="photo-placeholder"
+                     style="display:none;">
+                    👩🏻
+                </div>
+
+            </div>
+
+            <p>MY PHOTO</p>
+
+        </div>
+
+        <!-- BIODATA -->
+
+        <div class="section">
+
+            <h2>🍄 PERSONAL DATA</h2>
+
+            <div class="bio-list">
+
+                <span>Nama</span>
+                <span>:</span>
+                <span class="value">Siti Afriliani Rosipah</span>
+
+                <span>Tempat Lahir</span>
+                <span>:</span>
+                <span class="value">Isi tempat lahir</span>
+
+                <span>Tanggal Lahir</span>
+                <span>:</span>
+                <span class="value">Isi tanggal lahir</span>
+
+                <span>Alamat</span>
+                <span>:</span>
+                <span class="value">Isi alamat</span>
+
+                <span>Jenis Kelamin</span>
+                <span>:</span>
+                <span class="value">Isi jenis kelamin</span>
+
+                <span>Agama</span>
+                <span>:</span>
+                <span class="value">Isi agama</span>
+
+                <span>Status</span>
+                <span>:</span>
+                <span class="value">Pelajar</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- TENTANG SAYA -->
+
+    <div class="section">
+
+        <h2>⭐ ABOUT ME</h2>
+
+        <p class="description">
+            Halo! Perkenalkan, nama saya Siti Afriliani Rosipah.
+            Saya adalah seorang pelajar yang memiliki ketertarikan
+            dalam bidang teknologi informasi dan komputer.
+            Saya senang mempelajari hal-hal baru, mengembangkan
+            kemampuan, serta mencoba pengalaman yang bermanfaat
+            untuk masa depan.
+        </p>
+
+    </div>
+
+    <!-- PENDIDIKAN -->
+
+    <div class="section blue">
+
+        <h2>🎓 EDUCATION</h2>
+
+        <div class="bio-list">
+
+            <span>Sekolah</span>
+            <span>:</span>
+            <span class="value">SMK MA'ARIF TERPADU CICALENGKA</span>
+
+            <span>Jurusan</span>
+            <span>:</span>
+            <span class="value">Teknik Jaringan Komputer dan Telekomunikasi</span>
+
+            <span>Kelas</span>
+            <span>:</span>
+            <span class="value">XI TJKT 2</span>
+
+        </div>
+
+    </div>
+
+    <!-- KEAHLIAN -->
+
+    <div class="section green">
+
+        <h2>💻 MY SKILLS</h2>
+
+        <div class="skills">
+
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">Microsoft Word</div>
+            <div class="skill">Microsoft Excel</div>
+            <div class="skill">PowerPoint</div>
+            <div class="skill">Jaringan Komputer</div>
+
+        </div>
+
+    </div>
+
+    <!-- HOBI -->
+
+    <div class="section">
+
+        <h2>🎮 MY HOBBIES</h2>
+
+        <div class="hobbies">
+
+            <div class="hobby">
+                <span>🎧</span>
+                MUSIC
+            </div>
+
+            <div class="hobby">
+                <span>📚</span>
+                READING
+            </div>
+
+            <div class="hobby">
+                <span>💻</span>
+                TECHNOLOGY
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        🍄 THANK YOU FOR VISITING MY PROFILE 🍄
+
+        <br>
+
+        SITI AFRILIANI ROSIPAH
+
+        <br>
+
+
+    </div>
+
+</div>
+
+</body>
+</html>
