@@ -1,394 +1,337 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Siti Afriliani Rosipah - 262505004</title>
+<title>My Pixel World</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --blue: #1769a8;
+    --red: #ed2525;
+    --yellow: #ffcc00;
+    --cream: #fff8df;
+    --panel: #d9efff;
+    --ink: #333;
+}
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Nunito', sans-serif;
-    background: linear-gradient(#70c5ce, #b5e8e8);
-    color: #333;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #80cbd0, #a5e0e0);
+    color: var(--ink);
     min-height: 100vh;
     overflow-x: hidden;
 }
 
-/* AWAN */
-.cloud {
-    position: fixed;
-    width: 120px;
-    height: 40px;
-    background: white;
-    border-radius: 50px;
-    opacity: .8;
-    z-index: -1;
-    animation: moveCloud 25s linear infinite;
-}
-
-.cloud::before,
-.cloud::after {
-    content: "";
-    position: absolute;
-    background: white;
-    border-radius: 50%;
-}
-
-.cloud::before {
-    width: 55px;
-    height: 55px;
-    top: -25px;
-    left: 20px;
-}
-
-.cloud::after {
-    width: 65px;
-    height: 65px;
-    top: -35px;
-    right: 15px;
-}
-
-.cloud:nth-child(1) { top: 100px; left: -150px; }
-.cloud:nth-child(2) { top: 300px; left: -250px; animation-delay: 8s; }
-.cloud:nth-child(3) { top: 500px; left: -200px; animation-delay: 15s; }
-
-@keyframes moveCloud {
-    from { transform: translateX(-150px); }
-    to { transform: translateX(120vw); }
-}
-
-/* HEADER */
-header {
-    background: #e52521;
-    color: white;
-    text-align: center;
-    padding: 30px 15px;
-    border-bottom: 8px solid #a81513;
-}
-
-header h1 {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 22px;
-    line-height: 1.8;
-}
-
-header p {
-    margin-top: 10px;
-    font-weight: bold;
-}
-
 /* NAVIGASI */
+
 nav {
-    background: #1769aa;
+    height: 81px;
+    background: var(--blue);
+    border-top: 2px solid #e52525;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    align-items: center;
     gap: 12px;
-    padding: 15px;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 nav button {
-    background: #1769aa;
+    background: var(--blue);
     color: white;
     border: 3px solid white;
+    border-radius: 6px;
     padding: 12px 18px;
     font-weight: 800;
     font-size: 14px;
     cursor: pointer;
-    border-radius: 5px;
-    width: auto;
-    margin: 0;
 }
 
-nav button:hover,
-nav button.active {
-    background: #fbd000;
-    color: #333;
+nav button.active,
+nav button:hover {
+    background: var(--yellow);
+    color: #222;
 }
 
-/* KONTEN */
-.container {
-    width: 90%;
-    max-width: 1100px;
-    margin: 35px auto;
-}
+/* HALAMAN */
 
-.halaman {
+.page {
     display: none;
-    animation: muncul .4s ease;
+    min-height: calc(100vh - 81px);
+    padding: 35px 20px 45px;
 }
 
-.halaman.active {
+.page.active {
     display: block;
 }
 
-@keyframes muncul {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+/* CARD UTAMA */
 
 .card {
-    background: #fff8dc;
-    border: 5px solid #1769aa;
-    border-radius: 12px;
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--cream);
+    border: 5px solid var(--blue);
+    border-radius: 14px;
     padding: 25px;
-    margin-bottom: 30px;
-    box-shadow: 6px 6px 0 #333;
+    box-shadow: 8px 8px 0 #333;
 }
 
 h2 {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 16px;
-    color: #e52521;
-    margin-bottom: 25px;
+    font-family: 'Press Start 2P', monospace;
+    color: var(--red);
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 20px 0;
+}
+
+p {
+    font-size: 15px;
     line-height: 1.8;
+    margin: 12px 0;
+}
+
+/* TOMBOL KEMBALI */
+
+.back {
+    background: var(--blue);
+    color: white;
+    border: 3px solid #0c4d7b;
+    border-radius: 5px;
+    padding: 13px 17px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.back:hover {
+    background: var(--red);
 }
 
 /* BERANDA */
-.welcome {
+
+.home {
     text-align: center;
-    padding: 35px 20px;
+    padding: 12px 0 0;
 }
 
-.welcome p {
-    font-size: 17px;
-    line-height: 1.8;
-    margin-bottom: 20px;
+.home h2 {
+    margin: 12px 0 22px;
 }
 
-.pixel-btn {
-    display: inline-block;
-    background: #e52521;
+.home-intro {
+    margin: 0 auto 26px;
+    max-width: 800px;
+}
+
+.red-btn {
+    background: var(--red);
     color: white;
-    text-decoration: none;
-    padding: 13px 20px;
-    border: 3px solid #a81513;
+    border: 3px solid #a91515;
     border-radius: 5px;
-    font-weight: bold;
+    padding: 12px 18px;
+    font-weight: 800;
     cursor: pointer;
     margin: 5px;
 }
 
-.pixel-btn:hover {
-    background: #a81513;
+.red-btn:hover {
+    background: #bd1717;
 }
 
-/* PERMAINAN */
-.game-box {
-    background: #d9f1ff;
-    border: 4px solid #1769aa;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
+/* GAME MARIO */
+
+.game-panel {
     margin-top: 25px;
+    background: var(--panel);
+    border: 4px solid var(--blue);
+    border-radius: 11px;
+    padding: 18px 18px 25px;
+    text-align: center;
 }
 
-.game-box h3 {
-    color: #e52521;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 13px;
-    line-height: 1.8;
-    margin-bottom: 12px;
+.game-panel h2 {
+    font-size: 16px;
+    margin: 0 0 10px;
+}
+
+.scoreline {
+    font-weight: 700;
+    margin: 22px 0 14px;
 }
 
 #gameCanvas {
     display: block;
-    width: 100%;
-    max-width: 760px;
-    margin: 15px auto;
+    width: min(760px, 100%);
+    height: auto;
+    margin: auto;
     border: 4px solid #333;
     border-radius: 5px;
-    background: #87ceeb;
-    image-rendering: pixelated;
+    background: #87cce5;
     touch-action: manipulation;
 }
 
-.game-info {
-    font-weight: 800;
-    margin: 10px;
-}
-
 .game-controls {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
+    margin-top: 10px;
 }
 
-.game-controls button {
-    width: auto;
-    min-width: 120px;
-    margin: 0;
-    padding: 12px 18px;
-    background: #e52521;
-    color: white;
-    border: 3px solid #a81513;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
+.hint {
+    font-size: 12px;
+    color: #666;
+    margin-top: 10px;
 }
 
-.game-controls button:hover {
-    background: #a81513;
-}
-
-.petunjuk {
-    font-size: 13px !important;
-    margin-top: 12px;
-    color: #555;
+#gameStatus {
+    font-weight: 700;
+    margin-top: 22px;
 }
 
 /* BIODATA */
-.biodata {
+
+.bio-layout {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 25px;
+    margin-top: 25px;
     flex-wrap: wrap;
 }
 
-.foto {
+.photo-placeholder {
     width: 160px;
     height: 180px;
-    border: 5px solid #1769aa;
+    border: 5px solid var(--blue);
     background: #ddd;
-    overflow: hidden;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    color: #555;
+    text-align: center;
+    padding: 8px;
 }
 
-.foto img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.bio-info {
+    padding-top: 2px;
 }
 
-.data p {
-    margin: 12px 0;
-    font-size: 16px;
-    font-weight: 700;
+.bio-info p {
+    font-weight: 600;
+    margin: 8px 0;
 }
 
 /* BUKTI BELAJAR */
+
 .bukti-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 15px;
+    margin-top: 20px;
 }
 
 .bukti-card {
-    background: #d9f1ff;
-    border: 4px solid #1769aa;
-    border-radius: 10px;
-    padding: 15px;
+    background: var(--panel);
+    border: 4px solid var(--blue);
+    border-radius: 11px;
+    padding: 16px 14px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 125px;
+    transition: .2s;
+}
+
+.bukti-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 4px 5px 0 #333;
 }
 
 .bukti-card h3 {
-    font-size: 14px;
-    margin-bottom: 15px;
-    color: #e52521;
-}
-
-.bukti-card input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 2px solid #1769aa;
-    border-radius: 5px;
-    font-family: inherit;
     font-size: 13px;
+    color: var(--red);
+    line-height: 1.6;
+    margin: 0 0 12px;
 }
 
-.bukti-card button {
-    background: #e52521;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 800;
-    width: 100%;
-}
-
-.hasil-link {
-    display: none;
-    margin-top: 12px;
-    background: #fbd000;
+.project-link {
+    display: block;
+    background: var(--yellow);
     color: #222;
     text-decoration: none;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 11px 7px;
+    border-radius: 6px;
+    font-size: 11px;
     font-weight: 800;
-    font-size: 12px;
-    overflow-wrap: anywhere;
+    transition: .2s;
 }
 
-.keterangan {
-    font-size: 12px;
-    margin-top: 10px;
-    color: #555;
-}
-
-/* TOMBOL KEMBALI */
-.back-btn {
-    background: #1769aa;
+.project-link:hover {
+    background: var(--red);
     color: white;
-    border: 3px solid #0c4778;
-    padding: 12px 18px;
-    border-radius: 5px;
-    font-weight: 800;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-.back-btn:hover {
-    background: #0c4778;
+    transform: translateY(-2px);
 }
 
 /* FOOTER */
+
 footer {
-    background: #1769aa;
-    color: white;
     text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    font-weight: bold;
+    color: #175b8e;
+    font-size: 12px;
+    padding: 22px;
 }
 
 /* RESPONSIVE */
-@media (max-width: 900px) {
+
+@media(max-width: 850px) {
     .bukti-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 500px) {
-    header h1 { font-size: 15px; }
+@media(max-width: 560px) {
+    nav {
+        height: auto;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    nav button {
+        font-size: 11px;
+        padding: 10px;
+    }
+
+    .page {
+        padding: 22px 12px;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    h2 {
+        font-size: 14px;
+    }
 
     .bukti-grid {
         grid-template-columns: 1fr;
     }
 
-    h2 { font-size: 12px; }
+    .bio-layout {
+        justify-content: center;
+    }
 
-    nav button {
-        font-size: 12px;
-        padding: 10px;
+    .bio-info {
+        width: 100%;
     }
 }
 </style>
@@ -396,595 +339,583 @@ footer {
 
 <body>
 
-<div class="cloud"></div>
-<div class="cloud"></div>
-<div class="cloud"></div>
+<!-- NAVIGASI -->
 
-<header>
-    <h1>MY PIXEL WORLD</h1>
-    <p>Welcome to My Personal Website!</p>
-</header>
-
-<!-- MENU NAVIGASI -->
 <nav>
-    <button class="active" onclick="bukaHalaman('beranda', this)">
+    <button class="active" data-page="beranda"
+        onclick="showPage('beranda',this)">
         BERANDA
     </button>
 
-    <button onclick="bukaHalaman('biodata', this)">
+    <button data-page="biodata"
+        onclick="showPage('biodata',this)">
         BIODATA
     </button>
 
-    <button onclick="bukaHalaman('bukti', this)">
+    <button data-page="bukti"
+        onclick="showPage('bukti',this)">
         BUKTI BELAJAR
     </button>
 </nav>
 
-<div class="container">
 
-    <!-- ================= BERANDA ================= -->
-    <section id="beranda" class="halaman active">
+<!-- ================= BERANDA ================= -->
 
-        <div class="card welcome">
+<section id="beranda" class="page active">
+
+    <div class="card">
+
+        <div class="home">
+
             <h2>WELCOME PLAYER!</h2>
 
-
-            <button class="pixel-btn"
-                onclick="bukaHalaman('biodata')">
-                LIHAT BIODATA
-            </button>
-
-            <button class="pixel-btn"
-                onclick="bukaHalaman('bukti')">
-                LIHAT PROJECT
-            </button>
-
-            <!-- PERMAINAN MARIO -->
-            <div class="game-box">
-
-                <h3>SUPER MARIO MINI GAME</h3>
+            <div class="home-intro">
 
                 <p>
-                    Ayo bantu mario untuk melewati rintangan!
+                    Selamat datang di website pribadi saya!
+                    Website ini dibuat dengan tema Mario Pixel.
                 </p>
 
-                <div class="game-info">
-                    Skor: <span id="score">0</span>
-                    &nbsp; | &nbsp;
-                    Rekor: <span id="bestScore">0</span>
-                </div>
-
-                <canvas id="gameCanvas"
-                    width="760" height="260">
-                </canvas>
-
-                <div class="game-controls">
-                    <button onclick="mulaiGame()">
-                        MULAI GAME
-                    </button>
-
-                    <button onclick="lompat()">
-                        LOMPAT ⬆
-                    </button>
-
-                    <button onclick="resetGame()">
-                        ULANGI
-                    </button>
-                </div>
-
-                <p class="petunjuk">
-                    Petunjuk: Tekan SPACE, tombol panah atas,
-                    klik layar permainan, atau tombol LOMPAT
-                    untuk menghindari rintangan.
+                <p>
+                    Kenali biodata saya dan lihat berbagai
+                    project pembelajaran yang telah saya buat.
                 </p>
 
-                <p id="gameMessage" class="game-info">
-                    Tekan MULAI GAME untuk bermain!
-                </p>
+                <button class="red-btn"
+                    onclick="showPage('biodata')">
+                    LIHAT BIODATA
+                </button>
+
+                <button class="red-btn"
+                    onclick="showPage('bukti')">
+                    LIHAT PROJECT
+                </button>
 
             </div>
+
         </div>
-    </section>
 
-    <!-- ================= BIODATA ================= -->
-    <section id="biodata" class="halaman">
+        <!-- MINI GAME -->
 
-        <div class="card">
+        <div class="game-panel">
 
-            <button class="back-btn"
-                onclick="bukaHalaman('beranda')">
-                ← KEMBALI KE BERANDA
-            </button>
+            <h2>SUPER MARIO MINI GAME</h2>
 
-            <h2>MY BIODATA</h2>
+            <p>Ayo bantu karakter melewati rintangan!</p>
 
-            <div class="biodata">
+            <div class="scoreline">
+                Skor: <span id="score">0</span>
+                &nbsp; | &nbsp;
+                Rekor: <span id="best">0</span>
+            </div>
 
-                <div class="foto">
-                    <img src="WhatsApp Image 2026-11-05 at 19.24.46 (1).jpeg"
-                        alt="Foto Profil"
-                        onerror="this.style.display='none'; this.parentElement.innerHTML='Masukkan foto.jpg';">
-                </div>
+            <canvas id="gameCanvas"
+                width="760"
+                height="260">
+            </canvas>
 
-                <div class="data">
-                    <p>Nama: Siti Afriliani Rosipah</p>
-                    <p>NIM: 262505004</p>
-                    <p>Perguruan Tinggi: Universitas Al Ma'soem</p>
-                    <p>Fakultas: Komputer</p>
-                    <p>Prodi: Sistem Informasi</p>
-                </div>
+            <div class="game-controls">
+
+                <button class="red-btn"
+                    onclick="startGame()">
+                    MULAI GAME
+                </button>
+
+                <button class="red-btn"
+                    onclick="jump()">
+                    LOMPAT ↑
+                </button>
+
+                <button class="red-btn"
+                    onclick="resetGame()">
+                    ULANGI
+                </button>
 
             </div>
-        </div>
-    </section>
 
-    <!-- ================= BUKTI BELAJAR ================= -->
-    <section id="bukti" class="halaman">
-
-        <div class="card">
-
-            <button class="back-btn"
-                onclick="bukaHalaman('beranda')">
-                ← KEMBALI KE BERANDA
-            </button>
-
-            <h2>BUKTI BELAJAR</h2>
-
-            <p style="margin-bottom:20px;">
-                Tambahkan hasil project pembelajaran
-                beserta link-nya pada setiap kolom berikut.
+            <p class="hint">
+                Petunjuk: Tekan SPACE, tombol panah atas,
+                klik layar permainan, atau tombol LOMPAT
+                untuk menghindari rintangan.
             </p>
 
-            <div class="bukti-grid">
+            <p id="gameStatus">
+                Tekan MULAI GAME untuk bermain!
+            </p>
 
-                <div class="bukti-grid">
-
-    <!-- KALKULATOR MODULAR -->
-    <div class="bukti-card">
-
-        <h3>01. Kalkulator Modular</h3>
-
-        <a href="kalkulator-modular.html"
-           class="hasil-link"
-           target="_blank">
-            BUKA: Modular
-        </a>
+        </div>
 
     </div>
 
-                <div class="bukti-card">
-                    <h3>02. Kalkulator Kongruensi</h3>
-                    <input type="text" id="judul2"
-                        placeholder="Judul project">
-                    <input type="url" id="link2"
-                        placeholder="Link project">
-                    <button onclick="simpanBukti(2)">SIMPAN</button>
-                    <a id="hasil2" class="hasil-link"
-                        target="_blank" rel="noopener">
-                        BUKA PROJECT
-                    </a>
-                    <p class="keterangan" id="status2"></p>
-                </div>
+</section>
 
-                <div class="bukti-card">
-                    <h3>03. Number System Kalkulator</h3>
-                    <input type="text" id="judul3"
-                        placeholder="Judul project">
-                    <input type="url" id="link3"
-                        placeholder="Link project">
-                    <button onclick="simpanBukti(3)">SIMPAN</button>
-                    <a id="hasil3" class="hasil-link"
-                        target="_blank" rel="noopener">
-                        BUKA PROJECT
-                    </a>
-                    <p class="keterangan" id="status3"></p>
-                </div>
 
-                <div class="bukti-card">
-                    <h3>04. Kalkulator Combinatorics</h3>
-                    <input type="text" id="judul4"
-                        placeholder="Judul project">
-                    <input type="url" id="link4"
-                        placeholder="Link project">
-                    <button onclick="simpanBukti(4)">SIMPAN</button>
-                    <a id="hasil4" class="hasil-link"
-                        target="_blank" rel="noopener">
-                        BUKA PROJECT
-                    </a>
-                    <p class="keterangan" id="status4"></p>
-                </div>
+<!-- ================= BIODATA ================= -->
+
+<section id="biodata" class="page">
+
+    <div class="card">
+
+        <button class="back"
+            onclick="showPage('beranda')">
+            ← KEMBALI KE BERANDA
+        </button>
+
+        <h2>MY BIODATA</h2>
+
+        <div class="bio-layout">
+
+            <div class="photo-placeholder">
+                Masukkan foto.jpg
+            </div>
+
+            <div class="bio-info">
+
+                <p>Nama: Siti Afriliani Rosipah</p>
+
+                <p>Jurusan: TJKT</p>
+
+                <p>Sekolah: SMK</p>
+
+                <p>Hobi: Mendengarkan Musik</p>
+
+                <p>Motivasi: Terus Belajar dan Berkembang</p>
 
             </div>
-        </div>
-    </section>
 
-</div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BUKTI BELAJAR ================= -->
+
+<section id="bukti" class="page">
+
+    <div class="card">
+
+        <button class="back"
+            onclick="showPage('beranda')">
+            ← KEMBALI KE BERANDA
+        </button>
+
+        <h2>BUKTI BELAJAR</h2>
+
+        <p>
+            Pilih project pembelajaran yang ingin dibuka
+            dengan menekan tombol berikut.
+        </p>
+
+        <div class="bukti-grid">
+
+            <!-- PROJECT 1 -->
+
+            <div class="bukti-card">
+
+                <h3>01. Kalkulator Modular</h3>
+
+                <a class="project-link"
+                   href="https://sitiapriliani.vercel.app/modular"
+                   target="_blank"
+                   rel="noopener">
+
+                    BUKA: KALKULATOR MODULAR
+
+                </a>
+
+            </div>
+
+
+            <!-- PROJECT 2 -->
+
+            <div class="bukti-card">
+
+                <h3>02. Kalkulator Kongruensi</h3>
+
+                <a class="project-link"
+                   href="https://sitiapriliani.vercel.app/kongruensi"
+                   target="_blank"
+                   rel="noopener">
+
+                    BUKA: KALKULATOR KONGRUENSI
+
+                </a>
+
+            </div>
+
+
+            <!-- PROJECT 3 -->
+
+            <div class="bukti-card">
+
+                <h3>03. Number System Kalkulator</h3>
+
+                <a class="project-link"
+                   href="https://sitiapriliani.vercel.app/sistem-bilangan"
+                   target="_blank"
+                   rel="noopener">
+
+                    BUKA: SISTEM BILANGAN
+
+                </a>
+
+            </div>
+
+
+            <!-- PROJECT 4 -->
+
+            <div class="bukti-card">
+
+                <h3>04. Kalkulator Combinatorics</h3>
+
+                <a class="project-link"
+                   href="https://sitiapriliani.vercel.app/combinatorics"
+                   target="_blank"
+                   rel="noopener">
+
+                    BUKA: COMBINATORICS
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
 
 <footer>
-    © 2026 My Pixel World | Mario Theme
+    © 2026 MY PIXEL WORLD
 </footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
 
 <script>
 
-/* ================= NAVIGASI ================= */
+// FUNGSI PINDAH HALAMAN
 
-function bukaHalaman(nama, tombol) {
+function showPage(id, button) {
 
-    document.querySelectorAll('.halaman').forEach(halaman => {
-        halaman.classList.remove('active');
+    document.querySelectorAll('.page').forEach(p => {
+        p.classList.remove('active');
     });
 
-    document.getElementById(nama).classList.add('active');
+    document.getElementById(id).classList.add('active');
 
-    document.querySelectorAll('nav button').forEach(btn => {
-        btn.classList.remove('active');
+    document.querySelectorAll('nav button').forEach(b => {
+        b.classList.remove('active');
     });
 
-    if (tombol) {
-        tombol.classList.add('active');
-    } else {
-        document.querySelectorAll('nav button').forEach(btn => {
-            if (btn.getAttribute('onclick').includes(nama)) {
-                btn.classList.add('active');
-            }
-        });
+    const navButton = button ||
+        document.querySelector(
+            'nav button[data-page="' + id + '"]'
+        );
+
+    if (navButton) {
+        navButton.classList.add('active');
     }
 
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
     });
+
 }
 
-/* ================= BUKTI BELAJAR ================= */
 
-const KEY_BUKTI = "buktiBelajar";
+// ================= MINI GAME MARIO =================
 
-function ambilData() {
-    try {
-        return JSON.parse(localStorage.getItem(KEY_BUKTI)) || {};
-    } catch (error) {
-        return {};
-    }
-}
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
 
-function simpanBukti(nomor) {
-
-    const judul = document.getElementById("judul" + nomor).value.trim();
-    const link = document.getElementById("link" + nomor).value.trim();
-    const status = document.getElementById("status" + nomor);
-
-    if (!judul || !link) {
-        status.textContent = "Isi judul dan link terlebih dahulu!";
-        return;
-    }
-
-    let alamat;
-
-    try {
-        alamat = new URL(link);
-    } catch (error) {
-        status.textContent = "Link tidak valid!";
-        return;
-    }
-
-    if (alamat.protocol !== "http:" &&
-        alamat.protocol !== "https:") {
-        status.textContent = "Gunakan link HTTP atau HTTPS!";
-        return;
-    }
-
-    const data = ambilData();
-
-    data[nomor] = {
-        judul: judul,
-        link: alamat.href
-    };
-
-    try {
-        localStorage.setItem(KEY_BUKTI, JSON.stringify(data));
-        tampilkanBukti();
-        status.textContent = "Project berhasil disimpan!";
-    } catch (error) {
-        status.textContent = "Gagal menyimpan data!";
-    }
-}
-
-function tampilkanBukti() {
-
-    const data = ambilData();
-
-    for (let nomor = 1; nomor <= 4; nomor++) {
-
-        const item = data[nomor];
-
-        const judul = document.getElementById("judul" + nomor);
-        const link = document.getElementById("link" + nomor);
-        const hasil = document.getElementById("hasil" + nomor);
-
-        if (item) {
-            judul.value = item.judul;
-            link.value = item.link;
-            hasil.href = item.link;
-            hasil.textContent = "BUKA: " + item.judul;
-            hasil.style.display = "block";
-        }
-    }
-}
-
-tampilkanBukti();
-
-/* ================= MINI GAME ================= */
-
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
-
-let pemain;
-let rintangan;
-let skor;
-let gameAktif = false;
-let gameSelesai = false;
+let running = false;
+let raf = null;
+let score = 0;
+let best = 0;
 let frame = 0;
-let kecepatan = 5;
-let animasiId = null;
 
-let rekor = Number(localStorage.getItem("rekorMario")) || 0;
+const ground = 210;
 
-document.getElementById("bestScore").textContent = rekor;
+let player = {
+    x: 78,
+    y: ground - 42,
+    w: 27,
+    h: 42,
+    vy: 0,
+    onGround: true
+};
 
-function siapkanGame() {
-    pemain = {
-        x: 80,
-        y: 170,
-        lebar: 30,
-        tinggi: 40,
-        kecepatanY: 0,
-        diTanah: true
-    };
+let obstacles = [];
 
-    rintangan = [];
-    skor = 0;
-    frame = 0;
-    kecepatan = 5;
 
-    document.getElementById("score").textContent = skor;
+// GAMBAR AWAN
+
+function drawCloud(x, y) {
+
+    ctx.fillStyle = '#fff';
+
+    ctx.fillRect(x + 12, y, 22, 12);
+
+    ctx.fillRect(x, y + 12, 64, 16);
+
 }
 
-function gambarLatar() {
 
-    // Langit
-    ctx.fillStyle = "#87CEEB";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+// GAMBAR DUNIA GAME
 
-    // Awan
-    ctx.fillStyle = "white";
-    ctx.fillRect(120, 45, 65, 18);
-    ctx.fillRect(140, 30, 30, 30);
-    ctx.fillRect(400, 70, 65, 18);
-    ctx.fillRect(420, 55, 30, 30);
+function drawScene() {
 
-    // Tanah
-    ctx.fillStyle = "#8B4513";
-    ctx.fillRect(0, 210, canvas.width, 50);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Rumput
-    ctx.fillStyle = "#37a93c";
-    ctx.fillRect(0, 205, canvas.width, 8);
+    ctx.fillStyle = '#87cce5';
+    ctx.fillRect(0, 0, 760, 260);
 
-    // Kotak pixel tanah
-    ctx.fillStyle = "#b56b32";
+    drawCloud(120, 32);
+    drawCloud(420, 56);
 
-    for (let x = 0; x < canvas.width; x += 40) {
-        ctx.fillRect(x, 220, 20, 10);
+    // TANAH
+
+    ctx.fillStyle = '#35a852';
+    ctx.fillRect(0, ground, 760, 9);
+
+    ctx.fillStyle = '#8b4513';
+    ctx.fillRect(0, ground + 9, 760, 41);
+
+    ctx.fillStyle = '#b96b32';
+
+    for (let x = 0; x < 760; x += 40) {
+        ctx.fillRect(x + 3, ground + 22, 19, 10);
     }
-}
 
-function gambarPemain() {
+    // KARAKTER MARIO
 
-    // Karakter pixel original bergaya platformer
-    // Topi
-    ctx.fillStyle = "#e52521";
-    ctx.fillRect(pemain.x, pemain.y, 30, 10);
-    ctx.fillRect(pemain.x + 5, pemain.y - 7, 20, 8);
+    ctx.fillStyle = '#e52525';
+    ctx.fillRect(player.x, player.y, 27, 12);
 
-    // Wajah
-    ctx.fillStyle = "#ffcc99";
-    ctx.fillRect(pemain.x + 5, pemain.y + 10, 20, 12);
+    ctx.fillRect(player.x + 5, player.y - 5, 18, 6);
 
-    // Mata
-    ctx.fillStyle = "#222";
-    ctx.fillRect(pemain.x + 20, pemain.y + 13, 3, 4);
+    ctx.fillStyle = '#f5c28b';
+    ctx.fillRect(player.x + 4, player.y + 12, 19, 13);
 
-    // Baju
-    ctx.fillStyle = "#1769aa";
-    ctx.fillRect(pemain.x + 4, pemain.y + 22, 22, 12);
+    ctx.fillStyle = '#222';
+    ctx.fillRect(player.x + 18, player.y + 16, 3, 3);
 
-    // Tangan
-    ctx.fillStyle = "#ffcc99";
-    ctx.fillRect(pemain.x, pemain.y + 23, 5, 9);
-    ctx.fillRect(pemain.x + 25, pemain.y + 23, 5, 9);
+    ctx.fillStyle = '#1769a8';
+    ctx.fillRect(player.x + 4, player.y + 25, 19, 12);
 
-    // Kaki
-    ctx.fillStyle = "#59351c";
-    ctx.fillRect(pemain.x + 4, pemain.y + 34, 9, 6);
-    ctx.fillRect(pemain.x + 18, pemain.y + 34, 9, 6);
-}
+    ctx.fillStyle = '#633719';
+    ctx.fillRect(player.x + 3, player.y + 37, 9, 5);
+    ctx.fillRect(player.x + 17, player.y + 37, 9, 5);
 
-function gambarRintangan() {
+    // RINTANGAN
 
-    ctx.fillStyle = "#287b30";
+    obstacles.forEach(o => {
 
-    rintangan.forEach(r => {
-        ctx.fillRect(r.x, r.y, r.lebar, r.tinggi);
+        ctx.fillStyle = '#278b39';
+        ctx.fillRect(o.x, o.y, o.w, o.h);
 
-        ctx.fillStyle = "#49b84b";
-        ctx.fillRect(r.x - 5, r.y + 5, r.lebar + 10, 8);
+        ctx.fillStyle = '#17652b';
+        ctx.fillRect(o.x + 5, o.y + 5, o.w - 10, o.h - 5);
 
-        ctx.fillStyle = "#287b30";
     });
+
 }
 
-function buatRintangan() {
 
-    if (frame % 95 === 0) {
-        rintangan.push({
-            x: canvas.width,
-            y: 175,
-            lebar: 28,
-            tinggi: 30
-        });
-    }
-}
+// LOGIKA GAME
 
-function lompat() {
+function update() {
 
-    if (!gameAktif || gameSelesai) return;
-
-    if (pemain.diTanah) {
-        pemain.kecepatanY = -12;
-        pemain.diTanah = false;
-    }
-}
-
-function periksaTabrakan(a, b) {
-
-    return (
-        a.x < b.x + b.lebar &&
-        a.x + a.lebar > b.x &&
-        a.y < b.y + b.tinggi &&
-        a.y + a.tinggi > b.y
-    );
-}
-
-function akhirGame() {
-
-    gameAktif = false;
-    gameSelesai = true;
-
-    if (animasiId !== null) {
-        cancelAnimationFrame(animasiId);
-        animasiId = null;
-    }
-
-    if (skor > rekor) {
-        rekor = skor;
-        localStorage.setItem("rekorMario", rekor);
-        document.getElementById("bestScore").textContent = rekor;
-    }
-
-    document.getElementById("gameMessage").textContent =
-        "GAME OVER! Skor kamu: " + skor +
-        ". Tekan ULANGI untuk bermain lagi.";
-
-    gambarGameDiam();
-}
-
-function gambarGameDiam() {
-    gambarLatar();
-    gambarRintangan();
-    gambarPemain();
-}
-
-function jalankanGame() {
-
-    if (!gameAktif) return;
+    if (!running) return;
 
     frame++;
 
-    gambarLatar();
+    player.vy += 0.7;
+    player.y += player.vy;
 
-    // Gerakan pemain
-    pemain.y += pemain.kecepatanY;
-    pemain.kecepatanY += 0.6;
+    if (player.y + player.h >= ground) {
 
-    if (pemain.y >= 170) {
-        pemain.y = 170;
-        pemain.kecepatanY = 0;
-        pemain.diTanah = true;
+        player.y = ground - player.h;
+        player.vy = 0;
+        player.onGround = true;
+
     }
 
-    // Membuat rintangan
-    buatRintangan();
+    // MEMUNCULKAN RINTANGAN
 
-    // Gerakkan rintangan
-    rintangan.forEach(r => {
-        r.x -= kecepatan;
+    if (frame % 95 === 0) {
+
+        obstacles.push({
+            x: 760,
+            y: ground - 32,
+            w: 25,
+            h: 32
+        });
+
+    }
+
+    // GERAK RINTANGAN
+
+    obstacles.forEach(o => {
+        o.x -= 5;
     });
 
-    rintangan = rintangan.filter(r => r.x + r.lebar > 0);
+    obstacles = obstacles.filter(o => o.x + o.w > 0);
 
-    // Skor
-    if (frame % 10 === 0) {
-        skor++;
-        document.getElementById("score").textContent = skor;
-    }
+    // CEK TABRAKAN
 
-    // Kecepatan bertambah perlahan
-    if (frame % 500 === 0) {
-        kecepatan += 0.5;
-    }
+    for (const o of obstacles) {
 
-    // Tampilkan karakter dan rintangan
-    gambarRintangan();
-    gambarPemain();
+        if (
+            player.x + player.w > o.x + 3 &&
+            player.x < o.x + o.w - 3 &&
+            player.y + player.h > o.y + 3
+        ) {
 
-    // Periksa tabrakan
-    for (let r of rintangan) {
-        if (periksaTabrakan(pemain, r)) {
-            akhirGame();
+            endGame();
             return;
+
         }
+
     }
 
-    animasiId = requestAnimationFrame(jalankanGame);
-}
+    // SKOR
 
-function mulaiGame() {
+    if (frame % 12 === 0) {
 
-    if (animasiId !== null) {
-        cancelAnimationFrame(animasiId);
-        animasiId = null;
+        score++;
+
+        document.getElementById('score').textContent = score;
+
     }
 
-    siapkanGame();
+    drawScene();
 
-    gameAktif = true;
-    gameSelesai = false;
+    raf = requestAnimationFrame(update);
 
-    document.getElementById("gameMessage").textContent =
-        "Game dimulai! Hindari semua rintangan!";
-
-    jalankanGame();
 }
+
+
+// MULAI GAME
+
+function startGame() {
+
+    if (running) return;
+
+    if (score === 0 && obstacles.length === 0) {
+
+        document.getElementById('gameStatus').textContent =
+            'Game dimulai! Hindari rintangan!';
+
+    }
+
+    running = true;
+
+    update();
+
+}
+
+
+// MELOMPAT
+
+function jump() {
+
+    if (!running) {
+        startGame();
+    }
+
+    if (player.onGround) {
+
+        player.vy = -13;
+        player.onGround = false;
+
+    }
+
+}
+
+
+// GAME SELESAI
+
+function endGame() {
+
+    running = false;
+
+    cancelAnimationFrame(raf);
+
+    best = Math.max(best, score);
+
+    document.getElementById('best').textContent = best;
+
+    document.getElementById('gameStatus').textContent =
+        'Game selesai! Tekan ULANGI untuk mencoba lagi.';
+
+}
+
+
+// ULANGI GAME
 
 function resetGame() {
-    mulaiGame();
+
+    running = false;
+
+    cancelAnimationFrame(raf);
+
+    score = 0;
+    frame = 0;
+    obstacles = [];
+
+    player.y = ground - player.h;
+    player.vy = 0;
+    player.onGround = true;
+
+    document.getElementById('score').textContent = '0';
+
+    document.getElementById('best').textContent = best;
+
+    document.getElementById('gameStatus').textContent =
+        'Tekan MULAI GAME untuk bermain!';
+
+    drawScene();
+
 }
 
-// Kontrol keyboard
-document.addEventListener("keydown", function(event) {
 
-    if (event.code === "Space" || event.code === "ArrowUp") {
-        event.preventDefault();
+// KONTROL KEYBOARD
 
-        if (!gameAktif && !gameSelesai) {
-            mulaiGame();
-        } else {
-            lompat();
+canvas.addEventListener('click', jump);
+
+document.addEventListener('keydown', e => {
+
+    if (
+        e.code === 'Space' ||
+        e.code === 'ArrowUp'
+    ) {
+
+        if (
+            document.getElementById('beranda')
+            .classList.contains('active')
+        ) {
+
+            e.preventDefault();
+            jump();
+
         }
+
     }
+
 });
 
-// Klik area permainan untuk melompat
-canvas.addEventListener("click", function() {
-    if (gameAktif) {
-        lompat();
-    }
-});
 
-// Tampilan awal
-siapkanGame();
-gambarGameDiam();
+// GAMBAR AWAL
+
+drawScene();
 
 </script>
 
