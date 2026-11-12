@@ -4,195 +4,141 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pixel Mario Calculator</title>
+
+<title>Siti Afriliani Rosipah- Modular</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Press Start 2P', cursive;
-    background: #55b9ed;
     min-height: 100vh;
+    background: #58bce9;
+    font-family: 'Press Start 2P', cursive;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 15px;
+    padding: 35px 15px;
     overflow-x: hidden;
+    position: relative;
 }
 
-/* =========================
-   BACKGROUND LANGIT
-========================= */
-
-.sky {
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(
-        to bottom,
-        #55b9ed,
-        #65c5f7
-    );
-    overflow: hidden;
-    z-index: -1;
-}
-
-/* Awan pixel */
+/* BACKGROUND AWAN */
 
 .cloud {
-    position: absolute;
-    width: 65px;
-    height: 20px;
+    position: fixed;
+    width: 100px;
+    height: 25px;
     background: white;
     box-shadow:
-        0 5px 0 #dcecff,
-        0 10px 0 #b9d8f5,
-        10px -10px 0 white,
-        10px -15px 0 white,
-        25px -20px 0 white,
-        25px -15px 0 white,
-        40px -10px 0 white,
-        40px -5px 0 white,
-        50px 0 0 white,
-        50px 5px 0 #dcecff,
-        60px 10px 0 #b9d8f5;
-    image-rendering: pixelated;
-    animation: cloudMove 30s linear infinite;
+        15px -15px white,
+        40px -15px white,
+        65px 0 white,
+        15px 8px #d9efff,
+        40px 8px #d9efff,
+        65px 8px #b7dcf5;
+    z-index: 0;
+    animation: moveCloud 35s linear infinite;
 }
 
-/* Posisi awan */
-
 .cloud:nth-child(1) {
-    top: 10%;
-    left: -100px;
-    transform: scale(1.2);
-    animation-duration: 35s;
+    top: 12%;
+    left: 4%;
 }
 
 .cloud:nth-child(2) {
-    top: 22%;
-    left: 20%;
-    transform: scale(0.7);
-    animation-duration: 45s;
+    top: 25%;
+    right: 10%;
+    transform: scale(1.3);
 }
 
 .cloud:nth-child(3) {
-    top: 15%;
-    left: 65%;
-    transform: scale(1.5);
-    animation-duration: 38s;
+    top: 65%;
+    left: 25%;
+    transform: scale(0.8);
 }
 
 .cloud:nth-child(4) {
-    top: 35%;
-    left: 85%;
-    transform: scale(0.9);
-    animation-duration: 42s;
+    top: 45%;
+    right: 24%;
+    transform: scale(1.2);
 }
 
 .cloud:nth-child(5) {
-    top: 48%;
-    left: 5%;
-    transform: scale(1.4);
-    animation-duration: 50s;
+    top: 8%;
+    right: 30%;
+    transform: scale(1.5);
 }
 
 .cloud:nth-child(6) {
-    top: 55%;
-    left: 75%;
-    transform: scale(1.1);
-    animation-duration: 36s;
+    top: 75%;
+    right: 5%;
 }
 
-.cloud:nth-child(7) {
-    top: 70%;
-    left: 25%;
-    transform: scale(0.8);
-    animation-duration: 44s;
+@keyframes moveCloud {
+    0% { translate: -10px 0; }
+    50% { translate: 25px 0; }
+    100% { translate: -10px 0; }
 }
 
-.cloud:nth-child(8) {
-    top: 80%;
-    left: 60%;
-    transform: scale(1.3);
-    animation-duration: 40s;
-}
-
-.cloud:nth-child(9) {
-    top: 5%;
-    left: 90%;
-    transform: scale(0.8);
-    animation-duration: 48s;
-}
-
-.cloud:nth-child(10) {
-    top: 65%;
-    left: 95%;
-    transform: scale(0.7);
-    animation-duration: 39s;
-}
-
-@keyframes cloudMove {
-    from {
-        translate: -30px 0;
-    }
-
-    to {
-        translate: 100px 0;
-    }
-}
-
-/* =========================
-   KALKULATOR
-========================= */
+/* KOTAK UTAMA */
 
 .container {
     width: 100%;
-    max-width: 540px;
-    background: #fff5d6;
-    border: 6px solid #663300;
-    box-shadow: 10px 10px 0 #333;
+    max-width: 545px;
+    background: #fff5d8;
+    border: 6px solid #60320d;
     padding: 25px;
+    box-shadow: 10px 10px 0 #333;
     position: relative;
     z-index: 2;
 }
 
-/* Header */
+/* HEADER */
 
 .header {
-    background: #e83c32;
-    color: white;
+    background: #ed382d;
+    border: 4px solid #78360f;
+    padding: 30px 10px;
     text-align: center;
-    padding: 25px 10px;
-    border: 4px solid #663300;
+    color: white;
     margin-bottom: 25px;
-    line-height: 2;
 }
 
 .header h1 {
-    font-size: 17px;
+    font-size: 19px;
+    line-height: 1.8;
 }
 
 .header p {
-    font-size: 9px;
-    margin-top: 8px;
+    font-size: 10px;
+    margin-top: 12px;
 }
 
-/* Dekorasi Mario */
+/* IKON MARIO */
 
-.decoration {
+.icons {
     display: flex;
     justify-content: space-around;
-    font-size: 30px;
-    margin-bottom: 25px;
+    align-items: center;
+    margin: 25px 0;
+    font-size: 27px;
 }
 
-/* Input */
+.icons span {
+    transition: 0.2s;
+}
+
+.icons span:hover {
+    transform: scale(1.3) rotate(10deg);
+}
+
+/* INPUT */
 
 .input-group {
     margin-bottom: 20px;
@@ -200,110 +146,148 @@ body {
 
 label {
     display: block;
-    font-size: 11px;
-    margin-bottom: 12px;
-    color: #633b17;
+    font-size: 12px;
+    color: #673b1c;
+    margin-bottom: 13px;
 }
 
 input {
     width: 100%;
     padding: 15px;
-    border: 4px solid #663300;
     background: white;
-    font-family: inherit;
-    font-size: 12px;
+    border: 3px solid #693609;
     outline: none;
+    font-family: inherit;
+    font-size: 11px;
+    color: #60320d;
 }
 
 input:focus {
-    border-color: #e83c32;
+    border-color: #ed382d;
 }
 
-/* Tombol */
+input::placeholder {
+    color: #999;
+}
+
+/* TOMBOL */
 
 button {
     width: 100%;
-    padding: 18px;
-    border: 4px solid #663300;
+    padding: 20px 10px;
+    margin-top: 12px;
+    border: 3px solid #63370d;
     font-family: inherit;
-    font-size: 11px;
+    font-size: 12px;
     cursor: pointer;
     transition: 0.15s;
 }
 
-.calculate {
-    background: #38b54a;
+.hitung {
+    background: #35b34c;
     color: white;
-    box-shadow: 0 5px #176c2a;
-    margin-top: 5px;
+    box-shadow: 0 5px 0 #28752f;
 }
 
-.calculate:hover {
-    background: #2b963b;
+.hitung:hover {
+    background: #27983c;
     transform: translateY(2px);
-    box-shadow: 0 3px #176c2a;
+    box-shadow: 0 3px 0 #28752f;
 }
 
 .reset {
-    background: #ffcf35;
-    color: #663300;
-    margin-top: 15px;
+    background: #ffcc35;
+    color: #663b0e;
+    box-shadow: 0 5px 0 #a77c19;
 }
 
 .reset:hover {
-    background: #f2b900;
+    background: #ffdc61;
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 #a77c19;
 }
 
-/* Hasil */
+/* HASIL */
 
-.result {
-    background: #d5f5c7;
-    border: 4px dashed #36913d;
-    padding: 22px 12px;
-    margin-top: 25px;
-    text-align: center;
+.hasil-box {
     display: none;
-    line-height: 2.5;
-    overflow-wrap: anywhere;
+    background: #e1f9db;
+    border: 3px dashed #35a64b;
+    padding: 20px 12px;
+    text-align: center;
+    margin-top: 25px;
+    color: #28752f;
 }
 
-.result h3 {
-    font-size: 11px;
-    color: #176c2a;
+.hasil-box h3 {
+    font-size: 12px;
+    margin-bottom: 18px;
+}
+
+#hasil {
+    font-size: 24px;
+    overflow-wrap: anywhere;
     margin-bottom: 15px;
 }
 
-.result p {
+#rumus {
+    font-size: 9px;
+    line-height: 2;
+    overflow-wrap: anywhere;
+}
+
+/* TOMBOL KEMBALI */
+
+.back {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    background: #e6b735;
+    color: #60320d;
+    border: 3px solid #63370d;
+    box-shadow: 0 5px 0 #a77c19;
+    padding: 17px 8px;
+    margin-top: 25px;
     font-size: 10px;
+    transition: 0.2s;
 }
 
-.result strong {
-    font-size: 25px;
-    color: #e83c32;
+.back:hover {
+    background: #ffda62;
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 #a77c19;
 }
 
-/* Footer */
+/* FOOTER */
 
 .footer {
     text-align: center;
+    margin-top: 30px;
+    color: #78451d;
     font-size: 9px;
-    margin-top: 25px;
     line-height: 2.5;
-    color: #663300;
 }
 
-/* Responsif */
+/* RESPONSIVE */
 
-@media(max-width: 480px) {
+@media (max-width: 500px) {
     .container {
-        padding: 15px;
+        padding: 18px;
     }
 
     .header h1 {
-        font-size: 13px;
+        font-size: 14px;
+    }
+
+    .header p {
+        font-size: 8px;
     }
 
     label {
+        font-size: 10px;
+    }
+
+    input {
         font-size: 9px;
     }
 
@@ -315,29 +299,21 @@ button {
         font-size: 7px;
     }
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND AWAN -->
-<div class="sky">
-
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-
-</div>
+<!-- AWAN BACKGROUND -->
+<div class="cloud"></div>
+<div class="cloud"></div>
+<div class="cloud"></div>
+<div class="cloud"></div>
+<div class="cloud"></div>
+<div class="cloud"></div>
 
 <!-- KALKULATOR -->
+
 <div class="container">
 
     <div class="header">
@@ -345,8 +321,9 @@ button {
         <p>SUPER MODULAR GAME</p>
     </div>
 
-    <!-- ICON MARIO -->
-    <div class="decoration">
+    <!-- IKON MARIO -->
+
+    <div class="icons">
         <span>🍄</span>
         <span>🪙</span>
         <span>⭐</span>
@@ -354,129 +331,110 @@ button {
     </div>
 
     <!-- INPUT ANGKA -->
+
     <div class="input-group">
-
         <label>BILANGAN (a)</label>
-
         <input
             type="number"
             id="angka"
             placeholder="Masukkan bilangan a"
             step="1"
         >
-
     </div>
 
-    <!-- INPUT MODULUS -->
     <div class="input-group">
-
         <label>MODULUS (m)</label>
-
         <input
             type="number"
             id="modulus"
             placeholder="Masukkan modulus m"
             step="1"
         >
-
     </div>
 
-    <!-- BUTTON HITUNG -->
-    <button class="calculate" onclick="hitung()">
+    <!-- TOMBOL HITUNG -->
+
+    <button class="hitung" onclick="hitungModular()">
         ▶ HITUNG HASIL
     </button>
 
-    <!-- BUTTON RESET -->
-    <button class="reset" onclick="resetKalkulator()">
+    <button class="reset" onclick="resetGame()">
         ↻ RESET GAME
     </button>
 
     <!-- HASIL -->
-    <div class="result" id="result">
 
-        <h3>⭐ LEVEL COMPLETED ⭐</h3>
+    <div class="hasil-box" id="hasilBox">
+        <h3>⭐ HASIL MODULAR ⭐</h3>
+
+        <div id="hasil">0</div>
 
         <p id="rumus"></p>
-
-        <p>HASIL MODULAR:</p>
-
-        <strong id="hasil"></strong>
-
     </div>
 
+    <!-- TOMBOL KEMBALI -->
+
+    <a href="bukti-belajar.html" class="back">
+        ◀ KEMBALI KE BUKTI BELAJAR
+    </a>
+
     <!-- FOOTER -->
+
     <div class="footer">
-
-        🍄 SITI AFRILIANI ROSIPAH 🍄
-
+        🌸 SITI AFRILIANI ROSIPAH 🌸
         <br>
-
         262505004
-
     </div>
 
 </div>
 
-<!-- JAVASCRIPT -->
 <script>
 
-function hitung() {
+// FUNGSI KALKULATOR MODULAR
 
-    let aInput = document.getElementById("angka").value;
-    let mInput = document.getElementById("modulus").value;
+function hitungModular() {
 
-    // Validasi input
-    if (aInput === "" || mInput === "") {
+    let a = document.getElementById("angka").value;
+    let m = document.getElementById("modulus").value;
 
-        alert("Masukkan bilangan a dan modulus m!");
-
+    if (a === "" || m === "") {
+        alert("Masukkan semua angka terlebih dahulu!");
         return;
     }
 
-    let a = Number(aInput);
-    let m = Number(mInput);
+    a = Number(a);
+    m = Number(m);
 
-    // Validasi bilangan bulat
-    if (
-        !Number.isSafeInteger(a) ||
-        !Number.isSafeInteger(m)
-    ) {
-
+    if (!Number.isSafeInteger(a) ||
+        !Number.isSafeInteger(m)) {
         alert("Masukkan bilangan bulat yang valid!");
-
         return;
     }
 
-    // Validasi modulus
     if (m <= 0) {
-
         alert("Modulus harus lebih besar dari 0!");
-
         return;
     }
 
-    // Rumus aritmatika modular
     let hasil = ((a % m) + m) % m;
 
-    // Menampilkan hasil
-    document.getElementById("result").style.display = "block";
+    document.getElementById("hasil").innerHTML = hasil;
 
-    document.getElementById("rumus").innerText =
-        `${a} mod ${m}`;
+    document.getElementById("rumus").innerHTML =
+        a + " mod " + m + " = " + hasil;
 
-    document.getElementById("hasil").innerText =
-        hasil;
-
+    document.getElementById("hasilBox").style.display = "block";
 }
 
-// Fungsi reset
-function resetKalkulator() {
+// FUNGSI RESET
+
+function resetGame() {
 
     document.getElementById("angka").value = "";
 
     document.getElementById("modulus").value = "";
 
-    document.getElementById("result").style.display = "none";
+    document.getElementById("hasilBox").style.display = "none";
 
 }
 
