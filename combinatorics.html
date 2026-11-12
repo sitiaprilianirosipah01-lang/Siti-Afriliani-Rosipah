@@ -1,180 +1,293 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mario Combinatorics Calculator</title>
+
+<title>Mario Combinatorics</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    margin: 0;
     min-height: 100vh;
-    font-family: "Courier New", monospace;
-    background: linear-gradient(#55c9ff, #b9edff);
+    background: linear-gradient(
+        to bottom,
+        #55c7f5,
+        #a6e7fa
+    );
+    font-family: 'Press Start 2P', cursive;
+    padding: 20px 12px;
     overflow-x: hidden;
-    color: #fff;
 }
 
-/* BACKGROUND PIXEL */
+/* BACKGROUND AWAN */
+
 .cloud {
     position: fixed;
-    font-size: 55px;
-    animation: moveCloud 18s linear infinite;
+    width: 65px;
+    height: 16px;
+    background: white;
+    box-shadow:
+        12px -12px white,
+        28px -12px white,
+        45px 0 white,
+        12px 5px #d8edff,
+        28px 5px #d8edff,
+        45px 5px #d8edff;
+    animation: float 5s ease-in-out infinite;
     z-index: -1;
 }
 
 .cloud:nth-child(1) {
-    top: 50px;
-    left: -100px;
+    top: 15%;
+    left: 5%;
 }
 
 .cloud:nth-child(2) {
-    top: 160px;
-    left: 65%;
-    animation-delay: -8s;
+    top: 30%;
+    right: 8%;
+    animation-delay: 1s;
 }
 
-@keyframes moveCloud {
-    from { transform: translateX(-100px); }
-    to { transform: translateX(120vw); }
+.cloud:nth-child(3) {
+    top: 70%;
+    left: 10%;
+    animation-delay: 2s;
+}
+
+.cloud:nth-child(4) {
+    top: 80%;
+    right: 15%;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* JUDUL */
+
+.main-title {
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    text-shadow: 3px 3px #24549a;
+    margin: 5px 0 12px;
+    line-height: 2;
+}
+
+.subtitle {
+    text-align: center;
+    color: white;
+    font-size: 8px;
+    text-shadow: 2px 2px #24549a;
+    margin-bottom: 35px;
+}
+
+/* CONTAINER UTAMA */
+
+.container {
+    width: 100%;
+    max-width: 535px;
+    margin: auto;
+    background: #ed2935;
+    border: 5px solid #8c1720;
+    border-radius: 4px;
+    padding: 15px;
+    box-shadow: 7px 7px 0 #333;
 }
 
 /* HEADER */
-header {
-    text-align: center;
-    padding: 25px 10px;
-    color: white;
-    text-shadow: 3px 3px #174c9b;
-}
 
-header h1 {
-    font-size: 30px;
-    margin-bottom: 8px;
-}
-
-header p {
-    font-weight: bold;
-}
-
-/* MAIN CONTAINER */
-.container {
-    width: 90%;
-    max-width: 850px;
-    margin: 15px auto 50px;
-    background: #e52e36;
-    border: 7px solid #8b151d;
-    box-shadow: 8px 8px 0 #333;
-    padding: 25px;
-    border-radius: 5px;
-}
-
-.title {
-    text-align: center;
+.header {
     background: #ffca28;
-    color: #753900;
-    padding: 13px;
-    border: 4px solid #a56b00;
-    margin-bottom: 25px;
-    font-weight: bold;
-    font-size: 20px;
+    border: 3px solid #a35a0b;
+    text-align: center;
+    padding: 13px 5px;
+    color: #663500;
+    font-size: 10px;
+    margin-bottom: 15px;
 }
 
-/* CALCULATOR */
-.calculator {
+/* GRID KALKULATOR */
+
+.calculator-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
 }
+
+/* CARD */
 
 .card {
-    background: #fff;
-    color: #333;
-    border: 5px solid #174c9b;
-    padding: 20px;
-    box-shadow: 5px 5px 0 #222;
+    background: white;
+    border: 4px solid #1554a5;
+    box-shadow: 4px 4px 0 #292929;
+    padding: 15px 12px;
+    min-width: 0;
+    min-height: 230px;
     text-align: center;
 }
 
-.card h2 {
-    color: #e52e36;
-    font-size: 19px;
+.card h3 {
+    color: #ed2935;
+    font-size: 9px;
+    margin: 8px 0 15px;
+    line-height: 1.8;
+}
+
+.card .icon {
+    font-size: 15px;
 }
 
 .card p {
-    font-size: 13px;
-    font-weight: bold;
+    font-size: 7px;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 12px;
 }
+
+/* INPUT */
 
 input {
+    display: block;
     width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    border: 3px solid #174c9b;
-    font-family: inherit;
-    font-size: 16px;
+    min-width: 0;
+    padding: 9px 5px;
+    margin-bottom: 9px;
+    border: 1px solid #1554a5;
+    background: #fff;
     text-align: center;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    background: #ffca28;
-    border: 3px solid #a56b00;
-    color: #653700;
     font-family: inherit;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 14px;
-    box-shadow: 3px 3px 0 #555;
+    font-size: 7px;
+    outline: none;
 }
 
-button:hover {
-    background: #ffe477;
-    transform: translateY(-2px);
+input:focus {
+    border: 2px solid #ed2935;
 }
+
+/* TOMBOL */
+
+.calc-btn {
+    width: 100%;
+    padding: 10px 3px;
+    background: #ffca28;
+    border: 2px solid #a35a0b;
+    color: #663500;
+    font-family: inherit;
+    font-size: 7px;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 #555;
+    transition: .2s;
+}
+
+.calc-btn:hover {
+    background: #ffe16b;
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+/* HASIL */
 
 .result {
-    margin-top: 15px;
-    padding: 12px;
-    background: #d8f4ff;
-    border: 3px dashed #174c9b;
-    min-height: 45px;
-    font-weight: bold;
+    background: #e4f4ff;
+    border: 1px dashed #1554a5;
+    margin-top: 10px;
+    padding: 9px 5px;
+    font-size: 7px;
+    line-height: 1.8;
+    color: #333;
+    min-height: 29px;
     overflow-wrap: anywhere;
 }
 
-.back {
+.result.success {
+    background: #e0ffe5;
+    border-color: #239a43;
+    color: #16732d;
+}
+
+/* MARIO GUIDE */
+
+.guide {
+    min-height: 230px;
+}
+
+.guide h3 {
+    margin-bottom: 15px;
+}
+
+.guide p {
+    font-size: 7px;
+    line-height: 1.9;
+    margin-bottom: 9px;
+}
+
+/* TOMBOL KEMBALI */
+
+.back-btn {
     display: block;
-    width: 180px;
-    margin: 25px auto 0;
+    width: 112px;
+    margin: 20px auto 5px;
+    padding: 12px 5px;
+    background: #35b34c;
+    border: 2px solid #176a2c;
+    color: white;
     text-align: center;
     text-decoration: none;
-    padding: 12px;
-    background: #38b54a;
-    color: white;
-    border: 4px solid #176b2b;
-    font-weight: bold;
+    font-family: inherit;
+    font-size: 7px;
+    box-shadow: 3px 3px 0 #333;
+    transition: .2s;
 }
+
+.back-btn:hover {
+    background: #258b39;
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+/* FOOTER */
 
 footer {
     text-align: center;
-    color: #174c9b;
-    font-weight: bold;
-    padding: 15px;
+    margin-top: 35px;
+    font-size: 7px;
+    color: #17447e;
+    line-height: 2;
 }
 
-@media(max-width: 650px) {
-    .calculator {
+/* RESPONSIVE */
+
+@media (max-width: 450px) {
+    .calculator-grid {
         grid-template-columns: 1fr;
     }
 
-    header h1 {
-        font-size: 23px;
+    .main-title {
+        font-size: 11px;
+    }
+
+    .card {
+        min-height: 210px;
+    }
+
+    .container {
+        padding: 10px;
     }
 }
 </style>
@@ -182,103 +295,177 @@ footer {
 
 <body>
 
-<div class="cloud">☁️</div>
-<div class="cloud">☁️</div>
+<!-- AWAN -->
 
-<header>
-    <h1>🍄 MARIO COMBINATORICS 🍄</h1>
-    <p>SUPER MATHEMATICS WORLD</p>
-</header>
+<div class="cloud"></div>
+<div class="cloud"></div>
+<div class="cloud"></div>
+<div class="cloud"></div>
+
+<!-- JUDUL -->
+
+<h1 class="main-title">
+    🍄 MARIO COMBINATORICS 🍄
+</h1>
+
+<p class="subtitle">
+    SUPER MATHEMATICS WORLD
+</p>
+
+<!-- CONTAINER -->
 
 <div class="container">
 
-    <div class="title">
+    <div class="header">
         ★ COMBINATORICS CALCULATOR ★
     </div>
 
-    <div class="calculator">
+    <div class="calculator-grid">
 
-        <!-- FAKTORIAL -->
+        <!-- KALKULATOR FAKTORIAL -->
+
         <div class="card">
-            <h2>⭐ FAKTORIAL</h2>
-            <p>Menghitung nilai n!</p>
 
-            <input type="number" id="fN"
-            placeholder="Masukkan nilai n"
-            min="0" max="170">
+            <h3>
+                <span class="icon">⭐</span>
+                FAKTORIAL
+            </h3>
 
-            <button onclick="faktorial()">
+            <p>
+                Menghitung nilai n!
+            </p>
+
+            <input
+                type="number"
+                id="faktorialN"
+                placeholder="Masukkan nilai n"
+                min="0"
+                step="1"
+            >
+
+            <button class="calc-btn"
+                onclick="hitungFaktorial()">
                 HITUNG FAKTORIAL
             </button>
 
-            <div class="result" id="hasilF">
+            <div class="result" id="hasilFaktorial">
                 Hasil akan muncul di sini
             </div>
+
         </div>
 
-        <!-- PERMUTASI -->
+        <!-- KALKULATOR PERMUTASI -->
+
         <div class="card">
-            <h2>🍄 PERMUTASI</h2>
-            <p>Rumus: P(n,r) = n! / (n-r)!</p>
 
-            <input type="number" id="pN"
-            placeholder="Masukkan nilai n"
-            min="0">
+            <h3>
+                <span class="icon">🍄</span>
+                PERMUTASI
+            </h3>
 
-            <input type="number" id="pR"
-            placeholder="Masukkan nilai r"
-            min="0">
+            <p>
+                Rumus: P(n,r) = n! / (n-r)!
+            </p>
 
-            <button onclick="permutasi()">
+            <input
+                type="number"
+                id="permutasiN"
+                placeholder="Masukkan nilai n"
+                min="0"
+                step="1"
+            >
+
+            <input
+                type="number"
+                id="permutasiR"
+                placeholder="Masukkan nilai r"
+                min="0"
+                step="1"
+            >
+
+            <button class="calc-btn"
+                onclick="hitungPermutasi()">
                 HITUNG PERMUTASI
             </button>
 
-            <div class="result" id="hasilP">
+            <div class="result" id="hasilPermutasi">
                 Hasil akan muncul di sini
             </div>
+
         </div>
 
-        <!-- KOMBINASI -->
+        <!-- KALKULATOR KOMBINASI -->
+
         <div class="card">
-            <h2>⭐ KOMBINASI</h2>
-            <p>Rumus: C(n,r) = n! / (r!(n-r)!)</p>
 
-            <input type="number" id="cN"
-            placeholder="Masukkan nilai n"
-            min="0">
+            <h3>
+                <span class="icon">⭐</span>
+                KOMBINASI
+            </h3>
 
-            <input type="number" id="cR"
-            placeholder="Masukkan nilai r"
-            min="0">
+            <p>
+                Rumus: C(n,r) = n! / (r!(n-r)!)
+            </p>
 
-            <button onclick="kombinasi()">
+            <input
+                type="number"
+                id="kombinasiN"
+                placeholder="Masukkan nilai n"
+                min="0"
+                step="1"
+            >
+
+            <input
+                type="number"
+                id="kombinasiR"
+                placeholder="Masukkan nilai r"
+                min="0"
+                step="1"
+            >
+
+            <button class="calc-btn"
+                onclick="hitungKombinasi()">
                 HITUNG KOMBINASI
             </button>
 
-            <div class="result" id="hasilC">
+            <div class="result" id="hasilKombinasi">
                 Hasil akan muncul di sini
             </div>
+
         </div>
 
-        <!-- INFORMASI -->
-        <div class="card">
-            <h2>🎮 MARIO GUIDE</h2>
-            <p>Petunjuk penggunaan kalkulator</p>
+        <!-- MARIO GUIDE -->
 
-            <p>⭐ Faktorial: Menghitung perkalian
-            bilangan berurutan.</p>
+        <div class="card guide">
 
-            <p>🍄 Permutasi: Menghitung susunan
-            dengan memperhatikan urutan.</p>
+            <h3>
+                🎮 MARIO GUIDE
+            </h3>
 
-            <p>⭐ Kombinasi: Menghitung pilihan
-            tanpa memperhatikan urutan.</p>
+            <p>
+                Petunjuk penggunaan kalkulator
+            </p>
+
+            <p>
+                ⭐ Faktorial: Menghitung perkalian bilangan berurutan.
+            </p>
+
+            <p>
+                🍄 Permutasi: Menghitung susunan dengan memperhatikan urutan.
+            </p>
+
+            <p>
+                ⭐ Kombinasi: Menghitung pilihan tanpa memperhatikan urutan.
+            </p>
+
         </div>
 
     </div>
 
-    <a href="tugas.html" class="back">
-        ⬅ KEMBALI
+    <!-- TOMBOL KEMBALI -->
+
+    <a href="tugas.html#bukti" class="back-btn">
+        ← KEMBALI
     </a>
 
 </div>
@@ -289,90 +476,147 @@ footer {
 
 <script>
 
-// FUNGSI FAKTORIAL
-function fact(n) {
-    let hasil = 1;
+// VALIDASI INPUT
 
-    for(let i = 1; i <= n; i++) {
+function ambilBilangan(id) {
+
+    let nilai = document.getElementById(id).value;
+
+    if (nilai === "") {
+        throw new Error("Masukkan semua angka terlebih dahulu!");
+    }
+
+    let angka = Number(nilai);
+
+    if (!Number.isSafeInteger(angka) || angka < 0) {
+        throw new Error("Masukkan bilangan bulat nonnegatif yang valid!");
+    }
+
+    return angka;
+}
+
+// FUNGSI FAKTORIAL
+
+function faktorial(n) {
+
+    let hasil = 1n;
+
+    for (let i = 2n; i <= BigInt(n); i++) {
         hasil *= i;
     }
 
     return hasil;
 }
 
-// VALIDASI INPUT
-function validasi(n, r = null) {
-    if(n === "" || !Number.isInteger(Number(n))
-       || Number(n) < 0 || Number(n) > 170) {
-        return false;
-    }
+// MENAMPILKAN PESAN
 
-    if(r !== null) {
-        if(r === "" || !Number.isInteger(Number(r))
-           || Number(r) < 0 || Number(r) > Number(n)) {
-            return false;
+function tampilkanHasil(id, pesan, sukses = true) {
+
+    let elemen = document.getElementById(id);
+
+    elemen.textContent = pesan;
+
+    elemen.classList.toggle("success", sukses);
+}
+
+// KALKULATOR FAKTORIAL
+
+function hitungFaktorial() {
+
+    try {
+
+        let n = ambilBilangan("faktorialN");
+
+        let hasil = faktorial(n);
+
+        tampilkanHasil(
+            "hasilFaktorial",
+            n + "! = " + hasil.toString()
+        );
+
+    } catch (error) {
+
+        tampilkanHasil(
+            "hasilFaktorial",
+            error.message,
+            false
+        );
+
+    }
+}
+
+// KALKULATOR PERMUTASI
+
+function hitungPermutasi() {
+
+    try {
+
+        let n = ambilBilangan("permutasiN");
+        let r = ambilBilangan("permutasiR");
+
+        if (r > n) {
+            throw new Error("Nilai r tidak boleh lebih besar dari n!");
         }
-    }
 
-    return true;
+        let hasil = 1n;
+
+        for (let i = 0; i < r; i++) {
+            hasil *= BigInt(n - i);
+        }
+
+        tampilkanHasil(
+            "hasilPermutasi",
+            "P(" + n + "," + r + ") = " + hasil.toString()
+        );
+
+    } catch (error) {
+
+        tampilkanHasil(
+            "hasilPermutasi",
+            error.message,
+            false
+        );
+
+    }
 }
 
-// FAKTORIAL
-function faktorial() {
-    let n = document.getElementById("fN").value;
-    let output = document.getElementById("hasilF");
+// KALKULATOR KOMBINASI
 
-    if(!validasi(n)) {
-        output.innerHTML = "Masukkan bilangan bulat 0-170!";
-        return;
+function hitungKombinasi() {
+
+    try {
+
+        let n = ambilBilangan("kombinasiN");
+        let r = ambilBilangan("kombinasiR");
+
+        if (r > n) {
+            throw new Error("Nilai r tidak boleh lebih besar dari n!");
+        }
+
+        r = Math.min(r, n - r);
+
+        let hasil = 1n;
+
+        for (let i = 1; i <= r; i++) {
+
+            hasil = hasil * BigInt(n - r + i) / BigInt(i);
+
+        }
+
+        tampilkanHasil(
+            "hasilKombinasi",
+            "C(" + n + "," + document.getElementById("kombinasiR").value + ") = " + hasil.toString()
+        );
+
+    } catch (error) {
+
+        tampilkanHasil(
+            "hasilKombinasi",
+            error.message,
+            false
+        );
+
     }
-
-    n = Number(n);
-
-    output.innerHTML =
-        n + "! = " + fact(n).toLocaleString("en-US");
-}
-
-// PERMUTASI
-function permutasi() {
-    let n = document.getElementById("pN").value;
-    let r = document.getElementById("pR").value;
-    let output = document.getElementById("hasilP");
-
-    if(!validasi(n, r)) {
-        output.innerHTML = "Input tidak valid! Pastikan 0 ≤ r ≤ n.";
-        return;
-    }
-
-    n = Number(n);
-    r = Number(r);
-
-    let hasil = fact(n) / fact(n-r);
-
-    output.innerHTML =
-        "P(" + n + "," + r + ") = " +
-        hasil.toLocaleString("en-US");
-}
-
-// KOMBINASI
-function kombinasi() {
-    let n = document.getElementById("cN").value;
-    let r = document.getElementById("cR").value;
-    let output = document.getElementById("hasilC");
-
-    if(!validasi(n, r)) {
-        output.innerHTML = "Input tidak valid! Pastikan 0 ≤ r ≤ n.";
-        return;
-    }
-
-    n = Number(n);
-    r = Number(r);
-
-    let hasil = fact(n) / (fact(r) * fact(n-r));
-
-    output.innerHTML =
-        "C(" + n + "," + r + ") = " +
-        hasil.toLocaleString("en-US");
 }
 
 </script>
