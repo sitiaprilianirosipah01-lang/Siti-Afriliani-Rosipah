@@ -1,13 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kalkulator Kongruensi - Mario Pixel</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<title>Pixel Calculator - Kongruensi</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -16,232 +18,282 @@
 
 body {
     min-height: 100vh;
+    background: #58bce9;
     font-family: 'Press Start 2P', cursive;
-    background: linear-gradient(#55b9ed, #65c5f7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 15px;
     overflow-x: hidden;
-    padding: 40px 15px;
+    position: relative;
 }
 
-/* AWAN PIXEL */
+/* BACKGROUND AWAN */
+
 .cloud {
     position: fixed;
     width: 100px;
-    height: 35px;
+    height: 25px;
     background: white;
-    border-radius: 20px;
     box-shadow:
-        20px -15px white,
-        45px -10px white,
+        15px -15px white,
+        40px -15px white,
         65px 0 white,
-        15px 10px #dcecff;
-    opacity: 0.9;
-    animation: moveCloud linear infinite;
-    z-index: -1;
+        15px 8px #d9efff,
+        40px 8px #d9efff,
+        65px 8px #b7dcf5;
+    z-index: 0;
+    animation: moveCloud 35s linear infinite;
 }
 
 .cloud:nth-child(1) {
-    top: 10%;
-    animation-duration: 35s;
+    top: 12%;
+    left: 4%;
 }
 
 .cloud:nth-child(2) {
     top: 25%;
-    animation-duration: 45s;
-    animation-delay: -10s;
+    right: 10%;
+    transform: scale(1.3);
 }
 
 .cloud:nth-child(3) {
-    top: 45%;
-    animation-duration: 40s;
-    animation-delay: -20s;
+    top: 65%;
+    left: 25%;
+    transform: scale(.8);
 }
 
 .cloud:nth-child(4) {
-    top: 65%;
-    animation-duration: 50s;
-    animation-delay: -15s;
+    top: 45%;
+    right: 24%;
+    transform: scale(1.2);
 }
 
 .cloud:nth-child(5) {
-    top: 85%;
-    animation-duration: 38s;
-    animation-delay: -5s;
+    top: 8%;
+    right: 30%;
+    transform: scale(1.5);
+}
+
+.cloud:nth-child(6) {
+    top: 75%;
+    right: 5%;
 }
 
 @keyframes moveCloud {
-    from {
-        left: -180px;
-    }
-    to {
-        left: 110%;
-    }
+    0% { translate: -10px 0; }
+    50% { translate: 25px 0; }
+    100% { translate: -10px 0; }
 }
 
-/* CONTAINER */
+/* KOTAK UTAMA */
+
 .container {
     width: 100%;
-    max-width: 650px;
-    margin: auto;
-    background: #fff5d6;
-    border: 6px solid #663300;
-    box-shadow: 8px 8px #333;
+    max-width: 545px;
+    background: #fff5d8;
+    border: 6px solid #60320d;
     padding: 25px;
-    border-radius: 8px;
+    box-shadow: 10px 10px 0 #333;
+    position: relative;
+    z-index: 2;
 }
 
 /* HEADER */
+
 .header {
-    background: #e83c32;
-    color: white;
+    background: #ed382d;
+    border: 4px solid #78360f;
+    padding: 30px 10px;
     text-align: center;
-    padding: 22px 10px;
-    border: 4px solid #663300;
+    color: white;
     margin-bottom: 25px;
 }
 
 .header h1 {
-    font-size: 17px;
+    font-size: 19px;
     line-height: 1.8;
 }
 
 .header p {
-    font-size: 9px;
+    font-size: 10px;
     margin-top: 12px;
-    line-height: 1.8;
 }
 
-/* DEKORASI */
-.mario {
-    text-align: center;
-    font-size: 45px;
-    margin-bottom: 20px;
+/* IKON */
+
+.icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 25px 0;
+    font-size: 27px;
+}
+
+.icons span {
+    transition: .2s;
+}
+
+.icons span:hover {
+    transform: scale(1.3) rotate(10deg);
 }
 
 /* INPUT */
-.form-group {
+
+.input-group {
     margin-bottom: 20px;
 }
 
 label {
     display: block;
-    font-size: 10px;
-    margin-bottom: 12px;
-    color: #663300;
+    font-size: 12px;
+    color: #673b1c;
+    margin-bottom: 13px;
 }
 
 input {
     width: 100%;
     padding: 15px;
-    font-family: Arial, sans-serif;
-    font-size: 18px;
-    border: 3px solid #663300;
-    border-radius: 5px;
     background: white;
+    border: 3px solid #693609;
     outline: none;
+    font-family: inherit;
+    font-size: 11px;
+    color: #60320d;
 }
 
 input:focus {
-    border-color: #2879d0;
+    border-color: #ed382d;
+}
+
+input::placeholder {
+    color: #999;
 }
 
 /* TOMBOL */
-.buttons {
-    display: flex;
-    gap: 12px;
-    margin-top: 25px;
-}
 
 button {
-    flex: 1;
-    padding: 15px 8px;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 9px;
-    border: 3px solid #663300;
-    border-radius: 5px;
+    width: 100%;
+    padding: 20px 10px;
+    margin-top: 12px;
+    border: 3px solid #63370d;
+    font-family: inherit;
+    font-size: 12px;
     cursor: pointer;
-    box-shadow: 0 5px #333;
-    transition: 0.15s;
-}
-
-button:active {
-    transform: translateY(4px);
-    box-shadow: 0 1px #333;
+    transition: .15s;
 }
 
 .hitung {
-    background: #38b54a;
+    background: #35b34c;
     color: white;
+    box-shadow: 0 5px 0 #28752f;
+}
+
+.hitung:hover {
+    background: #27983c;
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 #28752f;
 }
 
 .reset {
-    background: #ffcf35;
-    color: #663300;
+    background: #ffcc35;
+    color: #663b0e;
+    box-shadow: 0 5px 0 #a77c19;
+}
+
+.reset:hover {
+    background: #ffdc61;
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 #a77c19;
 }
 
 /* HASIL */
-.result {
+
+.hasil-box {
     display: none;
-    margin-top: 28px;
-    padding: 20px;
-    background: #e4f5d7;
-    border: 3px dashed #38a34a;
-    border-radius: 5px;
-    line-height: 2;
-    overflow-wrap: anywhere;
+    background: #e1f9db;
+    border: 3px dashed #35a64b;
+    padding: 20px 12px;
+    text-align: center;
+    margin-top: 25px;
+    color: #28752f;
 }
 
-.result h3 {
+.hasil-box h3 {
     font-size: 12px;
-    color: #2879d0;
     margin-bottom: 18px;
 }
 
-.result p {
-    font-family: Arial, sans-serif;
-    font-size: 17px;
-    margin-bottom: 12px;
-    line-height: 1.7;
-    color: #333;
+#hasil {
+    font-size: 18px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+    margin-bottom: 15px;
 }
 
-.status {
-    font-family: 'Press Start 2P', cursive !important;
-    font-size: 10px !important;
-    margin-top: 15px;
-    color: #2879d0 !important;
-}
-
-/* PENJELASAN */
-.info {
-    margin-top: 25px;
-    padding: 15px;
-    background: #fff;
-    border: 3px solid #663300;
+#rumus {
     font-size: 9px;
-    line-height: 2.2;
-    color: #663300;
+    line-height: 2.5;
+    overflow-wrap: anywhere;
 }
+
+/* KEMBALI */
+
+.back {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    background: #e6b735;
+    color: #60320d;
+    border: 3px solid #63370d;
+    box-shadow: 0 5px 0 #a77c19;
+    padding: 17px 8px;
+    margin-top: 25px;
+    font-size: 10px;
+    transition: .2s;
+}
+
+.back:hover {
+    background: #ffda62;
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 #a77c19;
+}
+
+/* FOOTER */
 
 .footer {
     text-align: center;
-    margin-top: 25px;
-    font-size: 8px;
-    color: #663300;
-    line-height: 2;
+    margin-top: 30px;
+    color: #78451d;
+    font-size: 9px;
+    line-height: 2.5;
 }
 
 /* RESPONSIVE */
+
 @media (max-width: 500px) {
     .container {
-        padding: 15px;
+        padding: 18px;
     }
 
     .header h1 {
-        font-size: 12px;
+        font-size: 14px;
     }
 
-    button {
+    .header p {
         font-size: 8px;
+    }
+
+    label {
+        font-size: 10px;
+    }
+
+    input, button {
+        font-size: 9px;
+    }
+
+    .footer {
+        font-size: 7px;
     }
 }
 </style>
@@ -255,89 +307,114 @@ button:active {
 <div class="cloud"></div>
 <div class="cloud"></div>
 <div class="cloud"></div>
+<div class="cloud"></div>
+
+<!-- KALKULATOR -->
 
 <div class="container">
 
     <div class="header">
-        <h1>KALKULATOR KONGRUENSI</h1>
-        <p>SUPER MARIO PIXEL GAME</p>
+        <h1>PIXEL CALCULATOR</h1>
+        <p>SUPER CONGRUENCE GAME</p>
     </div>
 
-    <div class="mario">🍄 ⭐ 🍄</div>
+    <!-- IKON MARIO -->
 
-    <div class="form-group">
-        <label>MASUKKAN NILAI A</label>
-        <input type="number" id="nilaiA"
-        placeholder="Contoh: 17">
+    <div class="icons">
+        <span>🍄</span>
+        <span>🪙</span>
+        <span>⭐</span>
+        <span>🧱</span>
     </div>
 
-    <div class="form-group">
-        <label>MASUKKAN NILAI B</label>
-        <input type="number" id="nilaiB"
-        placeholder="Contoh: 5">
+    <!-- INPUT -->
+
+    <div class="input-group">
+        <label>BILANGAN PERTAMA (a)</label>
+        <input
+            type="number"
+            id="angka1"
+            placeholder="Masukkan bilangan a"
+            step="1"
+        >
     </div>
 
-    <div class="form-group">
-        <label>MASUKKAN MODULUS (M)</label>
-        <input type="number" id="modulus"
-        placeholder="Contoh: 6">
+    <div class="input-group">
+        <label>BILANGAN KEDUA (b)</label>
+        <input
+            type="number"
+            id="angka2"
+            placeholder="Masukkan bilangan b"
+            step="1"
+        >
     </div>
 
-    <div class="buttons">
-        <button class="hitung" onclick="hitungKongruensi()">
-            HITUNG
-        </button>
-
-        <button class="reset" onclick="resetKalkulator()">
-            RESET
-        </button>
+    <div class="input-group">
+        <label>MODULUS (m)</label>
+        <input
+            type="number"
+            id="modulus"
+            placeholder="Masukkan modulus m"
+            step="1"
+        >
     </div>
 
-    <div class="result" id="hasil">
-        <h3>HASIL PERHITUNGAN</h3>
-        <p id="persamaan"></p>
-        <p id="sisaA"></p>
-        <p id="sisaB"></p>
-        <p id="selisih"></p>
-        <p id="kesimpulan" class="status"></p>
+    <!-- TOMBOL -->
+
+    <button class="hitung" onclick="hitungKongruensi()">
+        ▶ HITUNG HASIL
+    </button>
+
+    <button class="reset" onclick="resetGame()">
+        ↻ RESET GAME
+    </button>
+
+    <!-- HASIL -->
+
+    <div class="hasil-box" id="hasilBox">
+
+        <h3>⭐ HASIL KONGRUENSI ⭐</h3>
+
+        <div id="hasil">?</div>
+
+        <p id="rumus"></p>
+
     </div>
 
-    <div class="info">
-        CARA KERJA:<br>
-        Kongruensi adalah hubungan dua bilangan
-        yang memiliki sisa pembagian sama.<br><br>
+    <!-- KEMBALI KE BUKTI BELAJAR -->
 
-        Rumus:<br>
-        A ≡ B (mod M)<br><br>
+    <a href="index.html#bukti" class="back">
+        ◀ KEMBALI KE BUKTI BELAJAR
+    </a>
 
-        Syarat:<br>
-        (A - B) habis dibagi M.
-    </div>
+    <!-- FOOTER -->
 
     <div class="footer">
-        🍄 MARIO MATHEMATICS GAME 🍄<br>
-        HAVE FUN LEARNING!
+        🌸 SITI AFRILIANI ROSIPAH 🌸
+        <br>
+        262505004
     </div>
 
 </div>
 
 <script>
+
+// FUNGSI KALKULATOR KONGRUENSI
+
 function hitungKongruensi() {
 
-    let a = Number(document.getElementById("nilaiA").value);
-    let b = Number(document.getElementById("nilaiB").value);
-    let m = Number(document.getElementById("modulus").value);
+    let nilaiA = document.getElementById("angka1").value;
+    let nilaiB = document.getElementById("angka2").value;
+    let nilaiM = document.getElementById("modulus").value;
 
-    let hasil = document.getElementById("hasil");
-
-    if (
-        document.getElementById("nilaiA").value === "" ||
-        document.getElementById("nilaiB").value === "" ||
-        document.getElementById("modulus").value === ""
-    ) {
-        alert("Silakan isi semua nilai terlebih dahulu!");
+    if (nilaiA === "" || nilaiB === "" || nilaiM === "") {
+        alert("Masukkan semua angka terlebih dahulu!");
         return;
     }
+
+    let a = Number(nilaiA);
+    let b = Number(nilaiB);
+    let m = Number(nilaiM);
 
     if (
         !Number.isSafeInteger(a) ||
@@ -354,51 +431,63 @@ function hitungKongruensi() {
     }
 
     // Menghitung sisa pembagian
-    let sisa1 = ((a % m) + m) % m;
-    let sisa2 = ((b % m) + m) % m;
 
-    // Menghitung selisih
-    let selisih = a - b;
+    let A = BigInt(a);
+    let B = BigInt(b);
+    let M = BigInt(m);
 
-    // Mengecek kongruensi
-    let kongruen = sisa1 === sisa2;
+    let sisaA = ((A % M) + M) % M;
+    let sisaB = ((B % M) + M) % M;
 
-    document.getElementById("persamaan").innerHTML =
-        `${a} ≡ ${b} (mod ${m})`;
+    // Memeriksa kongruensi
 
-    document.getElementById("sisaA").innerHTML =
-        `Sisa A = ${a} mod ${m} = ${sisa1}`;
+    let kongruen = sisaA === sisaB;
 
-    document.getElementById("sisaB").innerHTML =
-        `Sisa B = ${b} mod ${m} = ${sisa2}`;
-
-    document.getElementById("selisih").innerHTML =
-        `A - B = ${selisih}<br>` +
-        `Selisih mod ${m} = ${((selisih % m) + m) % m}`;
+    let hasil;
+    let warna;
 
     if (kongruen) {
-        document.getElementById("kesimpulan").innerHTML =
-            "✓ KONGRUEN!";
-        document.getElementById("kesimpulan").style.color =
-            "#229b42";
+
+        hasil = "KONGRUEN ✓";
+        warna = "#16852e";
+
     } else {
-        document.getElementById("kesimpulan").innerHTML =
-            "✗ TIDAK KONGRUEN!";
-        document.getElementById("kesimpulan").style.color =
-            "#e83c32";
+
+        hasil = "TIDAK KONGRUEN ✗";
+        warna = "#df3029";
+
     }
 
-    hasil.style.display = "block";
+    // Menampilkan hasil
+
+    document.getElementById("hasil").innerHTML = hasil;
+
+    document.getElementById("hasil").style.color = warna;
+
+    document.getElementById("rumus").innerHTML =
+        a + " mod " + m + " = " + sisaA +
+        "<br>" +
+        b + " mod " + m + " = " + sisaB +
+        "<br><br>" +
+        "Karena " + sisaA +
+        (kongruen ? " = " : " ≠ ") +
+        sisaB;
+
+    document.getElementById("hasilBox").style.display = "block";
 }
 
-function resetKalkulator() {
+// FUNGSI RESET
 
-    document.getElementById("nilaiA").value = "";
-    document.getElementById("nilaiB").value = "";
+function resetGame() {
+
+    document.getElementById("angka1").value = "";
+    document.getElementById("angka2").value = "";
     document.getElementById("modulus").value = "";
 
-    document.getElementById("hasil").style.display = "none";
+    document.getElementById("hasilBox").style.display = "none";
+
 }
+
 </script>
 
 </body>
